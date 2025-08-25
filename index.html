@@ -55,8 +55,12 @@
       top: 0;
       width: 100%;
       z-index: 10;
+      flex-wrap: wrap;
     }
-    header h1 { font-size: 1.4rem; margin: 0; }
+    header h1 {
+      font-size: 1.4rem;
+      margin: 0;
+    }
     nav {
       flex-grow: 1;
       text-align: center;
@@ -67,14 +71,15 @@
       margin: 0 10px;
       font-weight: 500;
     }
-    nav a:hover { text-decoration: underline; }
+    nav a:hover {
+      text-decoration: underline;
+    }
     header div {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    /* Main Content */
     main {
       display: flex;
       justify-content: center;
@@ -94,23 +99,148 @@
       margin-bottom: 20px;
     }
 
-    <!-- Course Slider -->
-<div class="course-slider">
-  <div class="course-track">
-    <div class="course-slide">
-      <h3>Science Department</h3>
-      <p>Physics, Chemistry, and Biology with advanced lab facilities and expert teachers.</p>
-    </div>
-    <div class="course-slide">
-      <h3>Business Department</h3>
-      <p>Accounting, Business Management, and Economics for future entrepreneurs.</p>
-    </div>
-    <div class="course-slide">
-      <h3>General Arts</h3>
-      <p>Literature, History, and Languages to develop critical thinking skills.</p>
-    </div>
+    /* Horizontal Course Slider */
+    .course-slider {
+      background: rgba(0,0,0,0.6);
+      padding: 15px 0;
+      border-radius: 10px;
+      max-width: 700px;
+      width: 90%;
+      overflow: hidden;
+      height: 150px;
+      position: relative;
+    }
+
+    .course-track {
+      display: flex;
+      width: 300%;
+      animation: slideCards 18s infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    .course-slider:hover .course-track {
+      animation-play-state: paused;
+    }
+
+    .course-slide {
+      flex: 0 0 100%;
+      padding: 0 25px;
+      box-sizing: border-box;
+    }
+
+    .course-slide h3 {
+      margin: 0 0 5px;
+    }
+
+    .course-slide p {
+      margin: 0;
+    }
+
+    @keyframes slideCards {
+      0% { transform: translateX(0%); }
+      33.33% { transform: translateX(-100%); }
+      66.66% { transform: translateX(-200%); }
+      100% { transform: translateX(0%); }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+
+    button {
+      background: #ffcc00;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #e6b800;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      body, html {
+        font-size: 14px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      header h1 {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+
+      nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+
+      nav a {
+        margin: 5px;
+        font-size: 13px;
+        display: inline-block;
+      }
+
+      header div {
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      main {
+        padding: 80px 10px 20px;
+      }
+
+      .welcome-card,
+      .course-slider {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+
+      .course-slide h3 {
+        font-size: 1rem;
+      }
+
+      .course-slide p {
+        font-size: 0.9rem;
+      }
+
+      button {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
+
+      footer {
+        font-size: 0.75rem;
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Slider -->
+  <div class="bg-slider">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
   </div>
-</div>
 
   <header>
     <h1>School Dashboard</h1>
@@ -123,7 +253,10 @@
       <a href="school-life.html">School Life</a>
       <a href="admin.html">Admin</a>
     </nav>
-    <div><small id="header-user">Guest</small> <button onclick="logout()">Logout</button></div>
+    <div>
+      <small id="header-user">Guest</small>
+      <button onclick="logout()">Logout</button>
+    </div>
   </header>
 
   <main>
@@ -133,19 +266,21 @@
       <p>Explore academic resources, participate in quizzes, stay updated with notices, and connect through chat.</p>
     </div>
 
-    <!-- Course Slider -->
+    <!-- Horizontal Course Slider -->
     <div class="course-slider">
-      <div class="course-slide">
-        <h3>Science Department</h3>
-        <p>Physics, Chemistry, and Biology with advanced lab facilities and expert teachers.</p>
-      </div>
-      <div class="course-slide">
-        <h3>Business Department</h3>
-        <p>Accounting, Business Management, and Economics for future entrepreneurs.</p>
-      </div>
-      <div class="course-slide">
-        <h3>General Arts</h3>
-        <p>Literature, History, and Languages to develop critical thinking skills.</p>
+      <div class="course-track">
+        <div class="course-slide">
+          <h3>Science Department</h3>
+          <p>Physics, Chemistry, and Biology with advanced lab facilities and expert teachers.</p>
+        </div>
+        <div class="course-slide">
+          <h3>Business Department</h3>
+          <p>Accounting, Business Management, and Economics for future entrepreneurs.</p>
+        </div>
+        <div class="course-slide">
+          <h3>General Arts</h3>
+          <p>Literature, History, and Languages to develop critical thinking skills.</p>
+        </div>
       </div>
     </div>
   </main>
