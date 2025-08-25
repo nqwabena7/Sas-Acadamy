@@ -1,62 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senior High School</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+  <style>
+    /* Full screen layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Background slider container */
+    .bg-slider {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: slideShow 18s infinite;
+    }
+
+    .bg-slide:nth-child(1) {
+      background-image: url('assets/images/bg1.jpg');
+      animation-delay: 0s;
+    }
+    .bg-slide:nth-child(2) {
+      background-image: url('assets/images/bg2.jpg');
+      animation-delay: 6s;
+    }
+    .bg-slide:nth-child(3) {
+      background-image: url('assets/images/bg3.jpg');
+      animation-delay: 12s;
+    }
+
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      30% { opacity: 1; }
+      40% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      padding: 15px 20px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Content box */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: calc(100% - 80px);
+    }
+
+    .welcome-card {
+      background: rgba(0,0,0,0.6);
+      padding: 30px 40px;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+
+    button {
+      background: #ffcc00;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #e6b800;
+    }
+
+    @media(max-width: 768px) {
+      nav a { margin: 0 6px; font-size: 14px; }
+      .welcome-card { padding: 20px; }
+    }
+  </style>
 </head>
-<body class="font-sans bg-gray-50">
+<body>
+  <!-- Background Slider -->
+  <div class="bg-slider">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+  </div>
 
-<!-- Header -->
-<header class="bg-blue-800 text-white shadow-md">
-  <div class="container mx-auto flex justify-between items-center p-5">
-    <h1 class="text-2xl font-bold">Senior High School</h1>
-    <nav class="hidden md:flex space-x-6 text-lg">
-      <a href="index.html" class="hover:text-yellow-300">Home</a>
-      <a href="academics.html" class="hover:text-yellow-300">Academics</a>
-      <a href="admissions.html" class="hover:text-yellow-300">Admissions</a>
-      <a href="school-life.html" class="hover:text-yellow-300">School Life</a>
-      <a href="dashboard.html" class="bg-yellow-400 px-4 py-2 rounded-lg text-gray-800 font-semibold hover:bg-yellow-300">Dashboard</a>
+  <header>
+    <h1>School Dashboard</h1>
+    <nav>
+      <a href="chat.html">Chat</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="notice.html">Notices</a>
+      <a href="academic.html">Academic</a>
+      <a href="admission.html">Admission</a>
+      <a href="school-life.html">School Life</a>
+      <a href="admin.html">Admin</a>
     </nav>
-  </div>
-</header>
+    <div><small id="header-user">Guest</small> <button onclick="logout()">Logout</button></div>
+  </header>
 
-<!-- Hero Section -->
-<section class="bg-cover bg-center h-[500px] flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1588075592446-20e5f3cbe1d7');">
-  <div class="bg-black bg-opacity-50 text-center p-10 rounded-xl">
-    <h2 class="text-4xl md:text-6xl text-white font-bold mb-4">Welcome to Senior High School</h2>
-    <p class="text-xl text-gray-200 mb-6">Excellence | Discipline | Integrity</p>
-    <a href="admissions.html" class="bg-yellow-400 text-gray-800 font-bold px-6 py-3 rounded-lg hover:bg-yellow-300">Apply Now</a>
-  </div>
-</section>
-
-<!-- Quick Links -->
-<section class="py-12 bg-gray-100 text-center">
-  <h3 class="text-3xl font-bold mb-8">Explore Our School</h3>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 container mx-auto px-6">
-    <div class="bg-white shadow-lg rounded-xl p-8 hover:shadow-2xl transition">
-      <h4 class="text-xl font-semibold mb-4">Academics</h4>
-      <p class="text-gray-500 mb-4">Explore our wide range of subjects and programs designed for excellence.</p>
-      <a href="academics.html" class="text-blue-600 font-bold">Learn More →</a>
+  <main>
+    <div class="welcome-card">
+      <h2>Welcome to Our School Portal 🎓</h2>
+      <p>Explore academic resources, participate in quizzes, stay updated with notices, and connect through chat.</p>
     </div>
-    <div class="bg-white shadow-lg rounded-xl p-8 hover:shadow-2xl transition">
-      <h4 class="text-xl font-semibold mb-4">Admissions</h4>
-      <p class="text-gray-500 mb-4">Join our school community. Check requirements and apply today.</p>
-      <a href="admissions.html" class="text-blue-600 font-bold">Learn More →</a>
-    </div>
-    <div class="bg-white shadow-lg rounded-xl p-8 hover:shadow-2xl transition">
-      <h4 class="text-xl font-semibold mb-4">School Life</h4>
-      <p class="text-gray-500 mb-4">Discover exciting activities, clubs, and events in our vibrant community.</p>
-      <a href="school-life.html" class="text-blue-600 font-bold">Learn More →</a>
-    </div>
-  </div>
-</section>
+  </main>
 
-<!-- Footer -->
-<footer class="bg-gray-800 text-gray-300 text-center py-6">
-  © 2025 Tapaman Senior High School | Contact: info@shs.edu | Phone: +233 55 123 4567
-</footer>
+  <footer>
+    <small>&copy; 2025 Senior High School. Built for Netlify + Firebase</small>
+  </footer>
 
+  <script type="module" src="firebase.js"></script>
 </body>
 </html>
