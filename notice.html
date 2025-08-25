@@ -3,21 +3,45 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notice Board</title>
-  <link rel="stylesheet" href="assets/style.css"/>
+  <title>Notices</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>Notice Board</h1>
+<body class="bg-gray-100 min-h-screen">
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Notice Board</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="chat.html">Chat</a>
-      <a href="quiz.html">Quiz</a>
+      <a href="index.html" class="hover:underline">Dashboard</a>
     </nav>
+    <div>
+      <small id="header-user" class="mr-2"></small>
+      <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+    </div>
   </header>
-  <main>
-    <ul id="notice-board"></ul>
+
+  <main class="p-6 max-w-2xl mx-auto bg-white rounded shadow">
+    <h2 class="text-lg font-bold mb-4">Latest Notices</h2>
+    <ul id="noticeList" class="space-y-2"></ul>
   </main>
+
+  <script type="module">
+    import { app } from "./firebase.js";
+    import { getFirestore, collection, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
+    const db = getFirestore(app);
+    const noticeList = document.getElementById("noticeList");
+
+    const q = query(collection(db, "notices"), orderBy("timestamp", "desc"));
+    onSnapshot(q, snapshot => {
+      noticeList.innerHTML = "";
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const li = document.createElement("li");
+        li.className = "border p-2 rounded";
+        li.textContent = `${data.title}: ${data.message}`;
+        noticeList.appendChild(li);
+      });
+    });
+  </script>
   <script type="module" src="firebase.js"></script>
 </body>
 </html>
