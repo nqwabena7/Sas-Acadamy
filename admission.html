@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Dashboard • Admission</title>
+  <title>Admission • Shining Senior High School</title>
 
   <!-- Bootstrap CSS & JS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -13,11 +13,10 @@
     body, html {
       margin: 0;
       padding: 0;
-      min-height: 100%;
       font-family: "Poppins", sans-serif;
       color: #fff;
-      background: #1a1a1a; /* simple dark background */
       overflow-x: hidden;
+      background: url('assets/images/admission-bg.jpg') center/cover no-repeat; /* Static hero */
     }
 
     header {
@@ -27,67 +26,64 @@
       background: rgba(0,0,0,0.7);
       padding: 10px 20px;
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
+      top:0; width:100%;
+      z-index:10;
       flex-wrap: wrap;
     }
 
-    header h1 { font-size: 1.4rem; margin: 0; }
-    nav { flex-grow: 1; text-align: center; }
-    nav a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 500; }
-    nav a:hover { text-decoration: underline; }
-    header div { display: flex; align-items: center; gap: 10px; }
+    header h1 { font-size:1.4rem; margin:0; }
+    nav { flex-grow:1; text-align:center; }
+    nav a { color:#fff; text-decoration:none; margin:0 10px; font-weight:500; }
+    nav a:hover { text-decoration:underline; }
+    header div { display:flex; align-items:center; gap:10px; }
 
-    main { 
-      padding-top: 100px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      text-align: center; 
-      min-height: 100vh;
-    }
+    main { padding-top:120px; max-width:900px; margin:auto; }
 
+    /* Hero Section */
     .hero {
       background: rgba(0,0,0,0.6);
       padding: 40px 20px;
-      border-radius: 10px;
-      max-width: 900px;
-      margin-bottom: 30px;
+      border-radius: 15px;
+      text-align:center;
+      margin-bottom:40px;
+    }
+    .hero h2 { font-size:2rem; margin-bottom:10px; }
+    .hero p { font-size:1rem; color:#ffdd57; }
+
+    /* Card Sections */
+    .admission-card {
+      background: rgba(0,0,0,0.6);
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:20px;
     }
 
-    .admission-section {
-      max-width: 900px;
-      text-align: left;
-      background: rgba(0,0,0,0.5);
-      padding: 30px 20px;
-      border-radius: 10px;
+    button {
+      background: #ffcc00;
+      border:none;
+      padding:8px 15px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:bold;
+      margin-top:10px;
     }
+    button:hover { background:#e6b800; }
 
-    .admission-section h3 { margin-top: 20px; }
-    .admission-section p, .admission-section li { line-height: 1.6; }
-
-    footer { 
-      text-align: center; 
-      color: #ddd; 
-      font-size: 0.9rem; 
-      padding: 20px 10px; 
-      background: rgba(0,0,0,0.5);
-      margin-top: 40px;
-    }
+    footer { text-align:center; color:#ddd; font-size:0.9rem; padding:20px 10px; margin-top:40px; }
 
     @media(max-width:768px){
-      header { flex-direction: column; align-items: flex-start; padding:10px; }
-      header h1 { font-size: 1.1rem; margin-bottom:5px; }
+      header { flex-direction:column; align-items:flex-start; padding:10px; }
+      header h1 { font-size:1.1rem; margin-bottom:5px; }
       nav { width:100%; display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:5px; }
-      nav a { margin:5px; font-size:13px; display:inline-block; }
-      header div { justify-content:space-between; width:100%; flex-wrap:wrap; gap:5px; }
+      nav a { margin:5px; font-size:13px; }
+      main { padding:100px 10px; }
+      .hero { padding:25px 15px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>School Dashboard</h1>
+    <h1>Shining Senior High School</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="chat.html">Chat</a>
@@ -105,30 +101,33 @@
   </header>
 
   <main>
+    <!-- Hero Section -->
     <div class="hero">
-      <h2>Admissions at Shining Senior High School</h2>
-      <p>Join our vibrant community and take the first step towards a bright future.</p>
+      <h2>Admissions Open 2025 🎓</h2>
+      <p>Join Shining Senior High School – where excellence meets opportunity!</p>
     </div>
 
-    <div class="admission-section">
+    <!-- Admission Requirements -->
+    <div class="admission-card">
       <h3>Admission Requirements</h3>
       <ul>
-        <li>Completed JHS Certificate</li>
-        <li>Birth Certificate</li>
-        <li>Recent Passport Photograph</li>
-        <li>Entrance Examination (if applicable)</li>
+        <li>Completed Basic Education Certificate</li>
+        <li>Minimum aggregate score of 25 in BECE</li>
+        <li>Pass in core subjects: English, Maths, Science</li>
       </ul>
+    </div>
 
-      <h3>Application Process</h3>
-      <ol>
-        <li>Obtain application form from school office or online.</li>
-        <li>Submit completed form with all required documents.</li>
-        <li>Attend entrance interview or exam (if required).</li>
-        <li>Receive admission decision.</li>
-      </ol>
+    <!-- How to Apply -->
+    <div class="admission-card">
+      <h3>How to Apply</h3>
+      <p>Submit your application form online or at the school admissions office. Ensure all documents are attached.</p>
+      <button>Download Form</button>
+    </div>
 
-      <h3>Contact Information</h3>
-      <p>Email: admissions@shininghigh.edu | Phone: +233 59 832 4814</p>
+    <!-- Fees & Scholarships -->
+    <div class="admission-card">
+      <h3>Fees & Scholarships</h3>
+      <p>Annual fees: GHS 4,500. Scholarships available for top performers and special talents.</p>
     </div>
   </main>
 
