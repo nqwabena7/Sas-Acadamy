@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Dashboard • School Life</title>
+  <title>School Life • Shining Senior High School</title>
 
   <!-- Bootstrap CSS & JS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -13,11 +13,10 @@
     body, html {
       margin: 0;
       padding: 0;
-      min-height: 100%;
       font-family: "Poppins", sans-serif;
       color: #fff;
-      background: #1a1a1a; /* static dark background */
       overflow-x: hidden;
+      background: url('assets/images/school-life-bg.jpg') center/cover no-repeat;
     }
 
     header {
@@ -27,67 +26,65 @@
       background: rgba(0,0,0,0.7);
       padding: 10px 20px;
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
+      top:0; width:100%;
+      z-index:10;
       flex-wrap: wrap;
     }
 
-    header h1 { font-size: 1.4rem; margin: 0; }
-    nav { flex-grow: 1; text-align: center; }
-    nav a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 500; }
-    nav a:hover { text-decoration: underline; }
-    header div { display: flex; align-items: center; gap: 10px; }
+    header h1 { font-size:1.4rem; margin:0; }
+    nav { flex-grow:1; text-align:center; }
+    nav a { color:#fff; text-decoration:none; margin:0 10px; font-weight:500; }
+    nav a:hover { text-decoration:underline; }
+    header div { display:flex; align-items:center; gap:10px; }
 
-    main { 
-      padding-top: 100px; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      text-align: center; 
-      min-height: 100vh;
-    }
+    main { padding-top:120px; max-width:900px; margin:auto; }
 
+    /* Hero Section */
     .hero {
       background: rgba(0,0,0,0.6);
       padding: 40px 20px;
-      border-radius: 10px;
-      max-width: 900px;
-      margin-bottom: 30px;
+      border-radius: 15px;
+      text-align:center;
+      margin-bottom:40px;
+    }
+    .hero h2 { font-size:2rem; margin-bottom:10px; }
+    .hero p { font-size:1rem; color:#ffdd57; }
+
+    /* Card Sections */
+    .life-card {
+      background: rgba(0,0,0,0.6);
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:20px;
     }
 
-    .school-life-section {
-      max-width: 900px;
-      text-align: left;
-      background: rgba(0,0,0,0.5);
-      padding: 30px 20px;
-      border-radius: 10px;
+    /* Buttons */
+    button {
+      background: #ffcc00;
+      border:none;
+      padding:8px 15px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:bold;
+      margin-top:10px;
     }
+    button:hover { background:#e6b800; }
 
-    .school-life-section h3 { margin-top: 20px; }
-    .school-life-section p, .school-life-section li { line-height: 1.6; }
-
-    footer { 
-      text-align: center; 
-      color: #ddd; 
-      font-size: 0.9rem; 
-      padding: 20px 10px; 
-      background: rgba(0,0,0,0.5);
-      margin-top: 40px;
-    }
+    footer { text-align:center; color:#ddd; font-size:0.9rem; padding:20px 10px; margin-top:40px; }
 
     @media(max-width:768px){
-      header { flex-direction: column; align-items: flex-start; padding:10px; }
-      header h1 { font-size: 1.1rem; margin-bottom:5px; }
+      header { flex-direction:column; align-items:flex-start; padding:10px; }
+      header h1 { font-size:1.1rem; margin-bottom:5px; }
       nav { width:100%; display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:5px; }
-      nav a { margin:5px; font-size:13px; display:inline-block; }
-      header div { justify-content:space-between; width:100%; flex-wrap:wrap; gap:5px; }
+      nav a { margin:5px; font-size:13px; }
+      main { padding:100px 10px; }
+      .hero { padding:25px 15px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>School Dashboard</h1>
+    <h1>Shining Senior High School</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="chat.html">Chat</a>
@@ -105,25 +102,29 @@
   </header>
 
   <main>
+    <!-- Hero Section -->
     <div class="hero">
-      <h2>Life at Shining Senior High School</h2>
-      <p>Discover a dynamic environment filled with learning, extracurricular activities, and community spirit.</p>
+      <h2>Life at Shining Senior High 🎓</h2>
+      <p>Experience academics, sports, clubs, and unforgettable memories.</p>
     </div>
 
-    <div class="school-life-section">
-      <h3>Clubs & Societies</h3>
-      <ul>
-        <li>Science and Technology Club</li>
-        <li>Drama and Arts Society</li>
-        <li>Debate and Public Speaking Club</li>
-        <li>Sports Teams: Football, Volleyball, Athletics</li>
-      </ul>
+    <!-- Student Clubs -->
+    <div class="life-card">
+      <h3>Student Clubs & Societies</h3>
+      <p>Join debate, drama, science, coding, and cultural clubs to enrich your skills.</p>
+    </div>
 
-      <h3>Events & Activities</h3>
-      <p>Our school hosts annual cultural events, sports competitions, and science fairs to nurture talent and leadership.</p>
+    <!-- Sports & Activities -->
+    <div class="life-card">
+      <h3>Sports & Activities</h3>
+      <p>Participate in football, basketball, athletics, and inter-school competitions.</p>
+    </div>
 
-      <h3>Student Support</h3>
-      <p>Guidance counselors, mentorship programs, and peer support groups ensure every student thrives academically and socially.</p>
+    <!-- Boarding & Facilities -->
+    <div class="life-card">
+      <h3>Boarding & Facilities</h3>
+      <p>Safe boarding houses, well-equipped library, labs, and recreational areas.</p>
+      <button>View Facilities</button>
     </div>
   </main>
 
