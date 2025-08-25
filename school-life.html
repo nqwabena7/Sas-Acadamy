@@ -1,81 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>School Life • SHS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-rose-50 min-h-screen flex flex-col">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Dashboard • School Life</title>
 
-  <header class="bg-rose-600 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-xl font-bold">SHS • School Life</h1>
-      <nav class="hidden sm:flex gap-6 text-sm">
-        <a href="index.html" class="hover:underline">Home</a>
-        <a href="academics.html" class="hover:underline">Academics</a>
-        <a href="admissions.html" class="hover:underline">Admissions</a>
-        <a href="chat.html" class="hover:underline">Chat</a>
-        <a href="quiz.html" class="hover:underline">Quiz</a>
-      </nav>
+  <!-- Bootstrap CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: #1a1a1a; /* static dark background */
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
+    header h1 { font-size: 1.4rem; margin: 0; }
+    nav { flex-grow: 1; text-align: center; }
+    nav a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    header div { display: flex; align-items: center; gap: 10px; }
+
+    main { 
+      padding-top: 100px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+      min-height: 100vh;
+    }
+
+    .hero {
+      background: rgba(0,0,0,0.6);
+      padding: 40px 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .school-life-section {
+      max-width: 900px;
+      text-align: left;
+      background: rgba(0,0,0,0.5);
+      padding: 30px 20px;
+      border-radius: 10px;
+    }
+
+    .school-life-section h3 { margin-top: 20px; }
+    .school-life-section p, .school-life-section li { line-height: 1.6; }
+
+    footer { 
+      text-align: center; 
+      color: #ddd; 
+      font-size: 0.9rem; 
+      padding: 20px 10px; 
+      background: rgba(0,0,0,0.5);
+      margin-top: 40px;
+    }
+
+    @media(max-width:768px){
+      header { flex-direction: column; align-items: flex-start; padding:10px; }
+      header h1 { font-size: 1.1rem; margin-bottom:5px; }
+      nav { width:100%; display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:5px; }
+      nav a { margin:5px; font-size:13px; display:inline-block; }
+      header div { justify-content:space-between; width:100%; flex-wrap:wrap; gap:5px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>School Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="chat.html">Chat</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="notice.html">Notices</a>
+      <a href="academics.html">Academic</a>
+      <a href="admission.html">Admission</a>
+      <a href="school-life.html">School Life</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div>
+      <small id="header-user">Guest</small>
+      <button onclick="logout()">Logout</button>
     </div>
   </header>
 
-  <main class="flex-1">
-    <section class="bg-rose-600 text-white">
-      <div class="max-w-6xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold mb-2">Vibrant Community • Lasting Memories</h2>
-        <p class="text-white/90">Sports, clubs, culture, and campus events.</p>
-      </div>
-    </section>
+  <main>
+    <div class="hero">
+      <h2>Life at Shining Senior High School</h2>
+      <p>Discover a dynamic environment filled with learning, extracurricular activities, and community spirit.</p>
+    </div>
 
-    <section class="max-w-6xl mx-auto px-4 py-10">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <figure class="overflow-hidden rounded-2xl shadow">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Library">
-          <figcaption class="p-3 bg-white text-sm">Quiet hours at the library</figcaption>
-        </figure>
-        <figure class="overflow-hidden rounded-2xl shadow">
-          <img src="https://images.unsplash.com/photo-1533245278667-4c95c3a67cc6?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Sports">
-          <figcaption class="p-3 bg-white text-sm">Inter-house sports day</figcaption>
-        </figure>
-        <figure class="overflow-hidden rounded-2xl shadow">
-          <img src="https://images.unsplash.com/photo-1523246191815-8c86a02f5a02?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Clubs">
-          <figcaption class="p-3 bg-white text-sm">STEM & Robotics club</figcaption>
-        </figure>
-        <figure class="overflow-hidden rounded-2xl shadow">
-          <img src="https://images.unsplash.com/photo-1515165562835-c3b8c0f4b36f?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Debate">
-          <figcaption class="p-3 bg-white text-sm">Debate tournament</figcaption>
-        </figure>
-        <figure class="overflow-hidden rounded-2xl shadow">
-          <img src="https://images.unsplash.com/photo-1555529771-35a38c4085d9?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Culture">
-          <figcaption class="p-3 bg-white text-sm">Cultural day</figcaption>
-        </figure>
-        <figure class="overflow-hidden rounded-2xl shadow">
-          <img src="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Choir">
-          <figcaption class="p-3 bg-white text-sm">Choir performance</figcaption>
-        </figure>
-      </div>
-    </section>
+    <div class="school-life-section">
+      <h3>Clubs & Societies</h3>
+      <ul>
+        <li>Science and Technology Club</li>
+        <li>Drama and Arts Society</li>
+        <li>Debate and Public Speaking Club</li>
+        <li>Sports Teams: Football, Volleyball, Athletics</li>
+      </ul>
 
-    <section class="max-w-6xl mx-auto px-4 pb-12">
-      <div class="grid gap-6 lg:grid-cols-3">
-        <div class="rounded-2xl bg-white border p-6">
-          <h3 class="font-bold text-rose-700 mb-2">Clubs</h3>
-          <p class="text-slate-700 text-sm">Science, Drama, Debate, Coding, Writers’ Club.</p>
-        </div>
-        <div class="rounded-2xl bg-white border p-6">
-          <h3 class="font-bold text-rose-700 mb-2">Sports</h3>
-          <p class="text-slate-700 text-sm">Football, Basketball, Volleyball, Athletics.</p>
-        </div>
-        <div class="rounded-2xl bg-white border p-6">
-          <h3 class="font-bold text-rose-700 mb-2">Events</h3>
-          <p class="text-slate-700 text-sm">Founders’ Day, Cultural Week, Prize-Giving Day.</p>
-        </div>
-      </div>
-    </section>
+      <h3>Events & Activities</h3>
+      <p>Our school hosts annual cultural events, sports competitions, and science fairs to nurture talent and leadership.</p>
+
+      <h3>Student Support</h3>
+      <p>Guidance counselors, mentorship programs, and peer support groups ensure every student thrives academically and socially.</p>
+    </div>
   </main>
 
-  <footer class="text-center text-rose-900/80 text-sm py-6">© 2025 Senior High School</footer>
+  <footer>
+    <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
+  </footer>
+
+  <script type="module" src="firebase.js"></script>
 </body>
 </html>
