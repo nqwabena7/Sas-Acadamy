@@ -1,53 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>School Life - SHS</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>School Life • SHS</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-yellow-50 font-sans">
+<body class="bg-rose-50 min-h-screen flex flex-col">
 
-<header class="bg-yellow-400 text-gray-900 p-6 shadow-lg">
-  <div class="container mx-auto flex justify-between items-center">
-    <h1 class="text-3xl font-bold">School Life</h1>
-    <nav class="space-x-4">
-      <a href="dashboard.html" class="hover:text-white">Dashboard</a>
-      <a href="academics.html" class="hover:text-white">Academics</a>
-      <a href="admissions.html" class="hover:text-white">Admissions</a>
-    </nav>
-  </div>
-</header>
+  <header class="bg-rose-600 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold">SHS • School Life</h1>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="academics.html" class="hover:underline">Academics</a>
+        <a href="admissions.html" class="hover:underline">Admissions</a>
+        <a href="chat.html" class="hover:underline">Chat</a>
+        <a href="quiz.html" class="hover:underline">Quiz</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="container mx-auto px-6 py-12">
-  <h2 class="text-2xl font-bold mb-6">Explore School Activities</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="https://via.placeholder.com/400x200" alt="Sports" class="w-full">
-      <div class="p-4">
-        <h3 class="font-bold">Sports</h3>
-        <p class="text-gray-600">Football, Basketball, Athletics, and more.</p>
+  <main class="flex-1">
+    <section class="bg-rose-600 text-white">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-2">Vibrant Community • Lasting Memories</h2>
+        <p class="text-white/90">Sports, clubs, culture, and campus events.</p>
       </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="https://via.placeholder.com/400x200" alt="Clubs" class="w-full">
-      <div class="p-4">
-        <h3 class="font-bold">Clubs</h3>
-        <p class="text-gray-600">Science Club, Drama Club, Debate Society.</p>
-      </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src="https://via.placeholder.com/400x200" alt="Culture" class="w-full">
-      <div class="p-4">
-        <h3 class="font-bold">Culture</h3>
-        <p class="text-gray-600">Exciting cultural and artistic events.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer class="bg-yellow-400 text-center p-4">
-  © 2025 SHS School Life
-</footer>
+    <section class="max-w-6xl mx-auto px-4 py-10">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <figure class="overflow-hidden rounded-2xl shadow">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Library">
+          <figcaption class="p-3 bg-white text-sm">Quiet hours at the library</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl shadow">
+          <img src="https://images.unsplash.com/photo-1533245278667-4c95c3a67cc6?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Sports">
+          <figcaption class="p-3 bg-white text-sm">Inter-house sports day</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl shadow">
+          <img src="https://images.unsplash.com/photo-1523246191815-8c86a02f5a02?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Clubs">
+          <figcaption class="p-3 bg-white text-sm">STEM & Robotics club</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl shadow">
+          <img src="https://images.unsplash.com/photo-1515165562835-c3b8c0f4b36f?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Debate">
+          <figcaption class="p-3 bg-white text-sm">Debate tournament</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl shadow">
+          <img src="https://images.unsplash.com/photo-1555529771-35a38c4085d9?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Culture">
+          <figcaption class="p-3 bg-white text-sm">Cultural day</figcaption>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl shadow">
+          <img src="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover hover:scale-105 transition" alt="Choir">
+          <figcaption class="p-3 bg-white text-sm">Choir performance</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 pb-12">
+      <div class="grid gap-6 lg:grid-cols-3">
+        <div class="rounded-2xl bg-white border p-6">
+          <h3 class="font-bold text-rose-700 mb-2">Clubs</h3>
+          <p class="text-slate-700 text-sm">Science, Drama, Debate, Coding, Writers’ Club.</p>
+        </div>
+        <div class="rounded-2xl bg-white border p-6">
+          <h3 class="font-bold text-rose-700 mb-2">Sports</h3>
+          <p class="text-slate-700 text-sm">Football, Basketball, Volleyball, Athletics.</p>
+        </div>
+        <div class="rounded-2xl bg-white border p-6">
+          <h3 class="font-bold text-rose-700 mb-2">Events</h3>
+          <p class="text-slate-700 text-sm">Founders’ Day, Cultural Week, Prize-Giving Day.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-rose-900/80 text-sm py-6">© 2025 Senior High School</footer>
 </body>
 </html>
