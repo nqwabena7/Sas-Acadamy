@@ -1,53 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academics - Senior High School</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Academics • SHS</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-white text-slate-800 min-h-screen flex flex-col">
 
-<!-- Header -->
-<header class="bg-blue-800 text-white shadow-md">
-  <div class="container mx-auto flex justify-between items-center p-5">
-    <h1 class="text-2xl font-bold">Senior High School</h1>
-    <nav class="hidden md:flex space-x-6">
-      <a href="index.html" class="hover:text-yellow-300">Home</a>
-      <a href="academics.html" class="text-yellow-300 font-bold">Academics</a>
-      <a href="admissions.html" class="hover:text-yellow-300">Admissions</a>
-      <a href="school-life.html" class="hover:text-yellow-300">School Life</a>
-      <a href="dashboard.html" class="bg-yellow-400 text-gray-800 px-4 py-2 rounded-lg hover:bg-yellow-300">Dashboard</a>
-    </nav>
-  </div>
-</header>
+  <header class="bg-indigo-950 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
+      <h1 class="text-xl font-bold"><span class="text-amber-400">SHS</span> • Academics</h1>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="index.html" class="hover:text-amber-300">Home</a>
+        <a href="admissions.html" class="hover:text-amber-300">Admissions</a>
+        <a href="chat.html" class="hover:text-amber-300">Chat</a>
+        <a href="quiz.html" class="hover:text-amber-300">Quiz</a>
+        <a href="school-life.html" class="hover:text-amber-300">School Life</a>
+      </nav>
+    </div>
+  </header>
 
-<!-- Hero -->
-<section class="bg-blue-900 text-white py-16 text-center">
-  <h2 class="text-4xl font-bold mb-4">Our Academic Programs</h2>
-  <p class="text-lg">Providing quality education with modern learning approaches.</p>
-</section>
+  <main class="flex-1">
+    <section class="bg-gradient-to-r from-indigo-950 to-indigo-800 text-white">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-2">Programs & Curriculum</h2>
+        <p class="text-white/80">Rigorous courses, caring teachers, excellent outcomes.</p>
+      </div>
+    </section>
 
-<!-- Content -->
-<section class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-  <div class="bg-white shadow-md p-6 rounded-xl">
-    <h3 class="text-xl font-bold mb-3">Science</h3>
-    <p class="text-gray-600">Physics, Chemistry, Biology, and Elective Mathematics for future scientists and engineers.</p>
-  </div>
-  <div class="bg-white shadow-md p-6 rounded-xl">
-    <h3 class="text-xl font-bold mb-3">Business</h3>
-    <p class="text-gray-600">Accounting, Economics, and Business Management to prepare future entrepreneurs.</p>
-  </div>
-  <div class="bg-white shadow-md p-6 rounded-xl">
-    <h3 class="text-xl font-bold mb-3">Arts</h3>
-    <p class="text-gray-600">Literature, History, and Government to build critical thinkers and leaders.</p>
-  </div>
-</section>
+    <section class="max-w-6xl mx-auto px-4 py-10 grid gap-6 md:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200 p-6">
+        <h3 class="text-lg font-bold text-indigo-900 mb-2">Science</h3>
+        <p>Physics, Chemistry, Biology, and Elective Mathematics with modern labs.</p>
+        <ul class="mt-4 text-sm list-disc ml-5">
+          <li>STEM seminars</li><li>Lab practicals</li><li>National Science & Maths Quiz prep</li>
+        </ul>
+      </article>
+      <article class="rounded-2xl border border-slate-200 p-6">
+        <h3 class="text-lg font-bold text-indigo-900 mb-2">Business</h3>
+        <p>Accounting, Economics, Business Mgmt, and Entrepreneurship.</p>
+        <ul class="mt-4 text-sm list-disc ml-5">
+          <li>Enterprise projects</li><li>Financial literacy</li><li>Case studies</li>
+        </ul>
+      </article>
+      <article class="rounded-2xl border border-slate-200 p-6">
+        <h3 class="text-lg font-bold text-indigo-900 mb-2">General Arts</h3>
+        <p>Government, History, Literature, CRS & Geography for future leaders.</p>
+        <ul class="mt-4 text-sm list-disc ml-5">
+          <li>Debate & MUN</li><li>Research methods</li><li>Public speaking</li>
+        </ul>
+      </article>
+    </section>
 
-<!-- Footer -->
-<footer class="bg-gray-800 text-gray-300 text-center py-6">
-  © 2025 Senior High School | Contact: info@shs.edu | Phone: +233 55 123 4567
-</footer>
+    <section class="max-w-6xl mx-auto px-4 pb-12">
+      <div class="rounded-2xl bg-amber-50 border border-amber-200 p-6">
+        <h4 class="font-bold text-amber-900 mb-2">Academic Resources</h4>
+        <ul class="grid sm:grid-cols-3 gap-4 text-sm">
+          <li class="p-3 rounded bg-white border">Timetables</li>
+          <li class="p-3 rounded bg-white border">Syllabus PDFs</li>
+          <li class="p-3 rounded bg-white border">Past Questions</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-slate-500 text-sm py-6 border-t">© 2025 Senior High School</footer>
 
 </body>
 </html>
