@@ -3,41 +3,52 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quiz Panel</title>
-  <link rel="stylesheet" href="assets/style.css"/>
+  <title>Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>Quick Quiz</h1>
+<body class="bg-gray-100 min-h-screen">
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Quiz</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="chat.html">Chat</a>
-      <a href="notice.html">Notices</a>
+      <a href="index.html" class="hover:underline">Dashboard</a>
     </nav>
+    <div>
+      <small id="header-user" class="mr-2"></small>
+      <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+    </div>
   </header>
-  <main>
-    <div class="card">
-      <p><strong>1.</strong> What is 2 + 2?</p>
-      <label><input type="radio" name="q1" value="3"> 3</label>
-      <label><input type="radio" name="q1" value="4"> 4</label>
-      <label><input type="radio" name="q1" value="5"> 5</label>
-    </div>
-    <div class="card">
-      <p><strong>2.</strong> Capital of France?</p>
-      <label><input type="radio" name="q2" value="Berlin"> Berlin</label>
-      <label><input type="radio" name="q2" value="Paris"> Paris</label>
-      <label><input type="radio" name="q2" value="Madrid"> Madrid</label>
-    </div>
-    <div class="card">
-      <p><strong>3.</strong> Chemical formula for water?</p>
-      <label><input type="radio" name="q3" value="CO2"> CO₂</label>
-      <label><input type="radio" name="q3" value="H2O"> H₂O</label>
-      <label><input type="radio" name="q3" value="NaCl"> NaCl</label>
-    </div>
-    <button onclick="checkAnswers()">Submit</button>
-    <p id="result"></p>
+
+  <main class="p-6 max-w-2xl mx-auto bg-white rounded shadow">
+    <h2 class="text-xl font-bold mb-4">Sample Quiz</h2>
+    <form id="quizForm">
+      <div class="mb-4">
+        <p>1. What is 5 + 3?</p>
+        <input type="radio" name="q1" value="8"/> 8
+        <input type="radio" name="q1" value="7"/> 7
+      </div>
+      <div class="mb-4">
+        <p>2. Capital of Ghana?</p>
+        <input type="radio" name="q2" value="Accra"/> Accra
+        <input type="radio" name="q2" value="Kumasi"/> Kumasi
+      </div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+    </form>
+    <p id="result" class="mt-4 font-bold"></p>
   </main>
-  <script src="assets/script.js"></script>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const answers = { q1: "8", q2: "Accra" };
+      let score = 0;
+      Object.keys(answers).forEach(q => {
+        if (document.querySelector(`input[name="${q}"]:checked`)?.value === answers[q]) {
+          score++;
+        }
+      });
+      document.getElementById("result").textContent = `Score: ${score}/2`;
+    });
+  </script>
   <script type="module" src="firebase.js"></script>
 </body>
 </html>
