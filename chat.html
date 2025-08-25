@@ -1,62 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Class Chat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Chat</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
-<body class="bg-gray-100 min-h-screen">
-  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">Class Chat</h1>
+<body class="bg-gradient-to-r from-green-100 to-green-200 font-sans">
+
+<header class="bg-green-700 text-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold">Student Chat Room</h1>
     <nav>
-      <a href="index.html" class="hover:underline">Dashboard</a>
+      <a href="index.html" class="px-3 hover:underline">Dashboard</a>
+      <a href="quiz.html" class="px-3 hover:underline">Quiz</a>
+      <a href="notices.html" class="px-3 hover:underline">Notices</a>
     </nav>
-    <div>
-      <small id="header-user" class="mr-2"></small>
-      <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+  </div>
+</header>
+
+<main class="container mx-auto p-4 max-w-3xl">
+  <div class="bg-white shadow rounded-lg p-4 h-[70vh] flex flex-col">
+    <div id="messages" class="flex-1 overflow-y-auto space-y-2 mb-4">
+      <!-- Chat messages will appear here -->
     </div>
-  </header>
+    <form id="chat-form" class="flex gap-2">
+      <input type="text" id="message-input" placeholder="Type your message..." class="flex-1 border p-2 rounded" required>
+      <button class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">Send</button>
+    </form>
+  </div>
+</main>
 
-  <main class="p-6 max-w-3xl mx-auto">
-    <div id="chatBox" class="bg-white p-4 rounded shadow h-80 overflow-y-auto mb-4"></div>
-    <div class="flex">
-      <input id="messageInput" type="text" placeholder="Type a message..." class="flex-1 border rounded-l p-2"/>
-      <button id="sendBtn" class="bg-blue-600 text-white px-4 rounded-r">Send</button>
-    </div>
-  </main>
+<footer class="text-center py-4 text-gray-700">© 2025 Senior High School</footer>
 
-  <script type="module">
-    import { app, auth } from "./firebase.js";
-    import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+<script>
+  // ✅ Firebase Config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
-    const db = getFirestore(app);
-    const chatBox = document.getElementById("chatBox");
-    const messageInput = document.getElementById("messageInput");
+  const messagesDiv = document.getElementById('messages');
+  const chatForm = document.getElementById('chat-form');
+  const messageInput = document.getElementById('message-input');
 
-    const q = query(collection(db, "messages"), orderBy("timestamp", "asc"));
-    onSnapshot(q, snapshot => {
-      chatBox.innerHTML = "";
-      snapshot.forEach(doc => {
-        const data = doc.data();
-        const div = document.createElement("div");
-        div.className = "p-2 border-b";
-        div.textContent = `${data.user}: ${data.text}`;
-        chatBox.appendChild(div);
-      });
-      chatBox.scrollTop = chatBox.scrollHeight;
+  // ✅ Load messages in real time
+  db.collection('chat').orderBy('timestamp').onSnapshot(snapshot => {
+    messagesDiv.innerHTML = '';
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const messageEl = document.createElement('div');
+      messageEl.classList = 'p-2 bg-gray-100 rounded shadow-sm';
+      messageEl.textContent = `${data.name || 'Anonymous'}: ${data.text}`;
+      messagesDiv.appendChild(messageEl);
     });
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  });
 
-    document.getElementById("sendBtn").addEventListener("click", async () => {
-      if (messageInput.value.trim() === "") return;
-      await addDoc(collection(db, "messages"), {
-        user: auth.currentUser.email,
-        text: messageInput.value,
-        timestamp: new Date()
-      });
-      messageInput.value = "";
+  // ✅ Send message
+  chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = messageInput.value;
+    db.collection('chat').add({
+      name: 'Student',
+      text,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
-  </script>
-  <script type="module" src="firebase.js"></script>
+    messageInput.value = '';
+  });
+</script>
+
 </body>
 </html>
