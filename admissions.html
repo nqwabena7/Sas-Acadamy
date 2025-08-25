@@ -1,43 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions - SHS</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admissions • SHS</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-green-50 font-sans">
+<body class="bg-emerald-50 min-h-screen flex flex-col">
 
-<header class="bg-green-600 text-white p-6 shadow-md">
-  <div class="container mx-auto flex justify-between items-center">
-    <h1 class="text-3xl font-bold">Admissions</h1>
-    <nav class="space-x-4">
-      <a href="dashboard.html" class="hover:text-yellow-300">Dashboard</a>
-      <a href="academics.html" class="hover:text-yellow-300">Academics</a>
-      <a href="school-life.html" class="hover:text-yellow-300">School Life</a>
-    </nav>
-  </div>
-</header>
+  <header class="bg-emerald-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold">SHS • Admissions</h1>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="academics.html" class="hover:underline">Academics</a>
+        <a href="chat.html" class="hover:underline">Chat</a>
+        <a href="quiz.html" class="hover:underline">Quiz</a>
+        <a href="school-life.html" class="hover:underline">School Life</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="container mx-auto px-6 py-12">
-  <h2 class="text-2xl font-bold mb-4 text-green-700">Join Our School</h2>
-  <p class="mb-6 text-gray-700">Apply for admission to one of the leading Senior High Schools.</p>
-  
-  <form class="bg-white shadow-md rounded-lg p-6 space-y-4 max-w-lg">
-    <input type="text" placeholder="Full Name" class="border p-3 w-full rounded">
-    <input type="email" placeholder="Email Address" class="border p-3 w-full rounded">
-    <select class="border p-3 w-full rounded">
-      <option>Select Department</option>
-      <option>Science</option>
-      <option>Business</option>
-      <option>General Arts</option>
-    </select>
-    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Apply Now</button>
-  </form>
-</section>
+  <main class="flex-1">
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-emerald-700 to-emerald-600 text-white">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-2">Apply to Senior High School</h2>
+        <p class="text-white/90">Excellence • Discipline • Integrity</p>
+      </div>
+    </section>
 
-<footer class="bg-green-600 text-white text-center p-4 mt-12">
-  © 2025 SHS Admissions
-</footer>
+    <section class="max-w-4xl mx-auto px-4 py-10 grid gap-8 lg:grid-cols-3">
+      <!-- Info -->
+      <div class="lg:col-span-1 bg-white rounded-2xl shadow p-6">
+        <h3 class="text-lg font-bold mb-3 text-emerald-700">Departments</h3>
+        <ul class="list-disc ml-5 space-y-1 text-slate-700">
+          <li>Science (Physics, Chemistry, Biology, Elective Math)</li>
+          <li>Business (Accounting, Economics, BM)</li>
+          <li>General Arts (Government, History, Literature)</li>
+        </ul>
+        <hr class="my-6">
+        <h3 class="text-lg font-bold mb-3 text-emerald-700">Requirements</h3>
+        <ul class="list-disc ml-5 space-y-1 text-slate-700">
+          <li>Completed JHS certificate</li>
+          <li>Recent transcript</li>
+          <li>Parent/Guardian contact</li>
+        </ul>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-2 bg-white rounded-2xl shadow p-6">
+        <h3 class="text-xl font-bold mb-4">Application Form</h3>
+        <form id="admissionForm" class="grid gap-4 sm:grid-cols-2">
+          <input id="fullName" class="border rounded px-3 py-2" placeholder="Full Name" required>
+          <input id="email" type="email" class="border rounded px-3 py-2" placeholder="Email" required>
+          <input id="phone" class="border rounded px-3 py-2" placeholder="Phone" required>
+          <select id="department" class="border rounded px-3 py-2">
+            <option value="Science">Science</option>
+            <option value="Business">Business</option>
+            <option value="General Arts">General Arts</option>
+          </select>
+          <input id="guardian" class="border rounded px-3 py-2 sm:col-span-2" placeholder="Parent/Guardian Name" required>
+          <textarea id="address" class="border rounded px-3 py-2 sm:col-span-2" placeholder="Address" rows="3" required></textarea>
+          <button class="sm:col-span-2 mt-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium">Submit Application</button>
+        </form>
+        <p id="appStatus" class="mt-3 text-sm"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-emerald-900/80 text-sm py-6">© 2025 Senior High School</footer>
+
+  <!-- Use existing firebase app + write to RTDB -->
+  <script type="module" src="firebase.js"></script>
+  <script type="module">
+    import { getApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    const db = getDatabase(getApp());
+    const form = document.getElementById('admissionForm');
+    const statusEl = document.getElementById('appStatus');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const payload = {
+        fullName: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        department: document.getElementById('department').value,
+        guardian: document.getElementById('guardian').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        ts: Date.now()
+      };
+      try {
+        await push(ref(db, 'applications'), payload);
+        statusEl.textContent = "✅ Application submitted successfully.";
+        statusEl.className = "mt-3 text-sm text-emerald-700";
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = "❌ Submission failed: " + err.message;
+        statusEl.className = "mt-3 text-sm text-rose-700";
+      }
+    });
+  </script>
 </body>
 </html>
