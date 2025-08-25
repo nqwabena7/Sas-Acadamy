@@ -1,123 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Academics • SHS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Dashboard • Academics</title>
+
+  <!-- Bootstrap CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      background: url('assets/images/bg1.jpeg') center/cover no-repeat;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
+    header h1 { font-size: 1.4rem; margin: 0; }
+    nav { flex-grow: 1; text-align: center; }
+    nav a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: 500; }
+    nav a:hover { text-decoration: underline; }
+    header div { display: flex; align-items: center; gap: 10px; }
+
+    main { 
+      padding-top: 100px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+      min-height: 100vh;
+    }
+
+    .hero {
+      background: rgba(0,0,0,0.6);
+      padding: 40px 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .department-section {
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px 20px;
+    }
+
+    .dept-card {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      color: #fff;
+    }
+
+    footer { 
+      text-align: center; 
+      color: #ddd; 
+      font-size: 0.9rem; 
+      padding: 20px 10px; 
+      background: rgba(0,0,0,0.5);
+    }
+
+    @media(max-width:768px){
+      header { flex-direction: column; align-items: flex-start; padding:10px; }
+      header h1 { font-size: 1.1rem; margin-bottom:5px; }
+      nav { width:100%; display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:5px; }
+      nav a { margin:5px; font-size:13px; display:inline-block; }
+      header div { justify-content:space-between; width:100%; flex-wrap:wrap; gap:5px; }
+    }
+  </style>
 </head>
-<body class="bg-white text-slate-800 min-h-screen flex flex-col">
-
-  <!-- HEADER -->
-  <header class="bg-indigo-950 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
-      <h1 class="text-xl font-bold"><span class="text-amber-400">SHS</span> • Academics</h1>
-
-      <!-- Hamburger Button for Mobile -->
-      <button id="menu-btn" class="sm:hidden text-white text-2xl focus:outline-none">
-        ☰
-      </button>
-
-      <!-- Navigation Menu -->
-      <nav id="menu" class="hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm absolute sm:static bg-indigo-950 sm:bg-transparent w-full sm:w-auto left-0 top-[70px] sm:top-auto p-4 sm:p-0 border-t sm:border-0 border-indigo-800 z-50">
-        
-        <a href="index.html" class="hover:text-amber-300">Home</a>
-        
-        <!-- Dropdown for Academics -->
-        <div class="relative group">
-          <button id="academics-btn" class="flex items-center gap-1 hover:text-amber-300">
-            Academics ▾
-          </button>
-          
-          <!-- Dropdown Menu -->
-          <div id="academics-menu" class="hidden sm:absolute left-0 mt-2 bg-white text-slate-800 rounded shadow-lg border w-40 z-50 sm:group-hover:block">
-            <ul class="text-sm">
-              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">Business</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">General Arts</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">Visual Art</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">Technical</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <a href="admissions.html" class="hover:text-amber-300">Admissions</a>
-        <a href="chat.html" class="hover:text-amber-300">Chat</a>
-        <a href="quiz.html" class="hover:text-amber-300">Quiz</a>
-        <a href="school-life.html" class="hover:text-amber-300">School Life</a>
-      </nav>
+<body>
+  <header>
+    <h1>School Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="chat.html">Chat</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="notice.html">Notices</a>
+      <a href="academics.html">Academic</a>
+      <a href="admission.html">Admission</a>
+      <a href="school-life.html">School Life</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div>
+      <small id="header-user">Guest</small>
+      <button onclick="logout()">Logout</button>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="flex-1">
-    <section class="bg-gradient-to-r from-indigo-950 to-indigo-800 text-white">
-      <div class="max-w-6xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold mb-2">Programs & Curriculum</h2>
-        <p class="text-white/80">Rigorous courses, caring teachers, excellent outcomes.</p>
-      </div>
-    </section>
+  <main>
+    <div class="hero">
+      <h2>Academics at Shining Senior High School</h2>
+      <p>Explore our departments and programs designed to empower students with knowledge and skills for success.</p>
+    </div>
 
-    <section class="max-w-6xl mx-auto px-4 py-10 grid gap-6 md:grid-cols-3">
-      <article class="rounded-2xl border border-slate-200 p-6">
-        <h3 class="text-lg font-bold text-indigo-900 mb-2">Science</h3>
-        <p>Physics, Chemistry, Biology, and Elective Mathematics with modern labs.</p>
-        <ul class="mt-4 text-sm list-disc ml-5">
-          <li>STEM seminars</li><li>Lab practicals</li><li>National Science & Maths Quiz prep</li>
-        </ul>
-      </article>
-      <article class="rounded-2xl border border-slate-200 p-6">
-        <h3 class="text-lg font-bold text-indigo-900 mb-2">Business</h3>
-        <p>Accounting, Economics, Business Mgmt, and Entrepreneurship.</p>
-        <ul class="mt-4 text-sm list-disc ml-5">
-          <li>Enterprise projects</li><li>Financial literacy</li><li>Case studies</li>
-        </ul>
-      </article>
-      <article class="rounded-2xl border border-slate-200 p-6">
-        <h3 class="text-lg font-bold text-indigo-900 mb-2">General Arts</h3>
-        <p>Government, History, Literature, CRS & Geography for future leaders.</p>
-        <ul class="mt-4 text-sm list-disc ml-5">
-          <li>Debate & MUN</li><li>Research methods</li><li>Public speaking</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 pb-12">
-      <div class="rounded-2xl bg-amber-50 border border-amber-200 p-6">
-        <h4 class="font-bold text-amber-900 mb-2">Academic Resources</h4>
-        <ul class="grid sm:grid-cols-3 gap-4 text-sm">
-          <li class="p-3 rounded bg-white border">Timetables</li>
-          <li class="p-3 rounded bg-white border">Syllabus PDFs</li>
-          <li class="p-3 rounded bg-white border">Past Questions</li>
+    <div class="department-section">
+      <div class="dept-card">
+        <h3>Science</h3>
+        <p>Physics, Chemistry, Biology, and Elective Mathematics.</p>
+        <ul>
+          <li>STEM seminars</li>
+          <li>Lab practicals</li>
+          <li>National Science & Maths Quiz prep</li>
         </ul>
       </div>
-    </section>
+      <div class="dept-card">
+        <h3>Business</h3>
+        <p>Accounting, Economics, Business Management, and Entrepreneurship.</p>
+        <ul>
+          <li>Enterprise projects</li>
+          <li>Financial literacy</li>
+          <li>Case studies</li>
+        </ul>
+      </div>
+      <div class="dept-card">
+        <h3>General Arts</h3>
+        <p>Government, History, Literature, CRS & Geography.</p>
+        <ul>
+          <li>Debate & MUN</li>
+          <li>Research methods</li>
+          <li>Public speaking</li>
+        </ul>
+      </div>
+      <div class="dept-card">
+        <h3>Visual Arts</h3>
+        <p>Painting, Sculpture, and Creative Design.</p>
+        <ul>
+          <li>Art exhibitions</li>
+          <li>Portfolio development</li>
+          <li>Workshops & competitions</li>
+        </ul>
+      </div>
+      <div class="dept-card">
+        <h3>Technical</h3>
+        <p>Building, Electricity, Electronics, and IT Skills.</p>
+        <ul>
+          <li>Workshops</li>
+          <li>Practical projects</li>
+          <li>Industry exposure</li>
+        </ul>
+      </div>
+    </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="text-center text-slate-500 text-sm py-6 border-t">
-    © 2025 Senior High School
+  <footer>
+    <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
   </footer>
 
-  <!-- JAVASCRIPT -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const menu = document.getElementById('menu');
-    const academicsBtn = document.getElementById('academics-btn');
-    const academicsMenu = document.getElementById('academics-menu');
-
-    // Toggle mobile menu
-    menuBtn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-
-    // Toggle academics dropdown on mobile
-    academicsBtn.addEventListener('click', (e) => {
-      if (window.innerWidth < 640) { // Only for mobile
-        e.preventDefault();
-        academicsMenu.classList.toggle('hidden');
-      }
-    });
-  </script>
-
+  <script type="module" src="firebase.js"></script>
 </body>
 </html>
