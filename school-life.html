@@ -16,8 +16,10 @@
       font-family: "Poppins", sans-serif;
       color: #fff;
       min-height: 100%;
+      width: 100%;
+      background: url('assets/images/school-life-bg.jpg') center/cover no-repeat fixed;
+      background-size: cover;
       overflow-x: hidden;
-      background: url('assets/images/school-life-bg.jpeg') center/cover no-repeat;
     }
 
     header {
@@ -39,11 +41,11 @@
     nav a:hover { text-decoration: underline; }
     header div { display:flex; align-items:center; gap:10px; }
 
-    main { padding-top: 100px; }
+    main { padding-top: 100px; min-height: calc(100vh - 140px); }
 
     /* Hero Section */
     .hero {
-      background: rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.45);
       text-align: center;
       padding: 80px 20px;
       border-radius: 15px;
@@ -63,7 +65,7 @@
       padding: 0 20px;
     }
     .activity-card {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
       border-radius: 12px;
       padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -77,9 +79,12 @@
 
     footer {
       text-align:center;
-      color:#ddd;
-      font-size:0.9rem;
-      padding:20px 10px;
+      color:#fff;
+      font-size:0.95rem;
+      padding:25px 10px;
+      background: rgba(0,0,0,0.75);
+      position: relative;
+      z-index: 10;
     }
 
     @media(max-width:768px){
