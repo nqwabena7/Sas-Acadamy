@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Dashboard</title>
+  <title>School Dashboard • Home</title>
 
   <!-- Bootstrap CSS & JS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -17,7 +17,7 @@
       font-family: "Poppins", sans-serif;
       color: #fff;
       overflow-x: hidden;
-      background: url('assets/images/bg1.jpeg') center/cover no-repeat; /* Default background */
+      background: url('assets/images/bg1.jpeg') center/cover no-repeat;
     }
 
     /* Background Slider */
@@ -40,200 +40,50 @@
       animation: slideShow 18s infinite ease-in-out;
     }
 
-    .bg-slide:nth-child(1) {
-      background-image: url('assets/images/bg1.jpeg');
-      animation-delay: 0s;
-    }
-
-    .bg-slide:nth-child(2) {
-      background-image: url('assets/images/bg2.jpeg');
-      animation-delay: 9s;
-    }
-
-    .bg-slide:nth-child(3) {
-      background-image: url('assets/images/bg3.jpeg');
-      animation-delay: 13s;
-    }
+    .bg-slide:nth-child(1) { background-image: url('assets/images/bg1.jpeg'); animation-delay: 0s; }
+    .bg-slide:nth-child(2) { background-image: url('assets/images/bg2.jpeg'); animation-delay: 9s; }
+    .bg-slide:nth-child(3) { background-image: url('assets/images/bg3.jpeg'); animation-delay: 13s; }
 
     @keyframes slideShow {
-      0%, 100% { opacity: 0; }
-      10%, 30% { opacity: 1; }
+      0%,100% { opacity: 0; }
+      10%,30% { opacity: 1; }
       40% { opacity: 0; }
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.7);
-      padding: 10px 20px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
-      flex-wrap: wrap;
-    }
-
-    header h1 {
-      font-size: 1.4rem;
-      margin: 0;
-    }
-
-    nav {
-      flex-grow: 1;
-      text-align: center;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    header div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      flex-direction: column;
-      min-height: 100vh;
-      padding-top: 100px;
-      box-sizing: border-box;
-    }
-
-    .welcome-card {
-      background: rgba(0,0,0,0.6);
-      padding: 20px 30px;
-      border-radius: 10px;
-      max-width: 700px;
-      width: 90%;
-      margin-bottom: 30px;
-    }
-
-    /* Bootstrap Carousel Custom Styling */
-    .course-slider {
-      max-width: 700px;
-      width: 90%;
-      margin-bottom: 30px;
-    }
-
-    .course-card {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
-      color: #fff;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .carousel-indicators [data-bs-target] {
-      background-color: #ffcc00;
-    }
-
+    header { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.7); padding: 10px 20px; position: fixed; top:0; width:100%; z-index:10; flex-wrap: wrap; }
+    header h1 { font-size:1.4rem; margin:0; }
+    nav { flex-grow:1; text-align:center; }
+    nav a { color:#fff; text-decoration:none; margin:0 10px; font-weight:500; }
+    nav a:hover { text-decoration:underline; }
+    header div { display:flex; align-items:center; gap:10px; }
+    main { display:flex; justify-content:center; align-items:center; text-align:center; flex-direction:column; min-height:100vh; padding-top:100px; box-sizing:border-box; }
+    .welcome-card { background: rgba(0,0,0,0.6); padding: 20px 30px; border-radius:10px; max-width:700px; width:90%; margin-bottom:30px; }
+    .course-slider { max-width:700px; width:90%; margin-bottom:30px; }
+    .course-card { background: rgba(0,0,0,0.6); padding:20px; border-radius:10px; color:#fff; height:150px; display:flex; flex-direction:column; justify-content:center; }
+    .carousel-indicators [data-bs-target] { background-color: #ffcc00; }
     .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      filter: invert(1);
-    }
+    .carousel-control-next-icon { filter: invert(1); }
+    button { background: #ffcc00; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold; }
+    button:hover { background:#e6b800; }
+    footer { text-align:center; color:#ddd; font-size:0.9rem; padding:20px 10px; }
 
-    button {
-      background: #ffcc00;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #e6b800;
-    }
-
-    footer {
-      text-align: center;
-      color: #ddd;
-      font-size: 0.9rem;
-      padding: 20px 10px;
-    }
-
-    /* Responsive Styling */
-    @media (max-width: 768px) {
-      body, html {
-        font-size: 14px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-      }
-
-      header h1 {
-        font-size: 1.1rem;
-        margin-bottom: 5px;
-      }
-
-      nav {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 5px;
-      }
-
-      nav a {
-        margin: 5px;
-        font-size: 13px;
-        display: inline-block;
-      }
-
-      header div {
-        justify-content: space-between;
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-
-      .welcome-card,
-      .course-slider {
-        width: 100%;
-        max-width: 100%;
-        padding: 15px;
-      }
-
-      .course-card h3 {
-        font-size: 1rem;
-      }
-
-      .course-card p {
-        font-size: 0.9rem;
-      }
-
-      button {
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-
-      footer {
-        font-size: 0.75rem;
-      }
+    @media(max-width:768px){
+      body, html { font-size:14px; }
+      header { flex-direction:column; align-items:flex-start; padding:10px; }
+      header h1 { font-size:1.1rem; margin-bottom:5px; }
+      nav { width:100%; display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:5px; }
+      nav a { margin:5px; font-size:13px; display:inline-block; }
+      header div { justify-content:space-between; width:100%; flex-wrap:wrap; gap:5px; }
+      .welcome-card, .course-slider { width:100%; max-width:100%; padding:15px; }
+      .course-card h3 { font-size:1rem; }
+      .course-card p { font-size:0.9rem; }
+      button { font-size:13px; padding:6px 12px; }
+      footer { font-size:0.75rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Background Slider -->
+  <!-- Background Slider only on Home -->
   <div class="bg-slider">
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
@@ -258,18 +108,16 @@
   </header>
 
   <main>
-    <!-- Welcome Section -->
     <div class="welcome-card">
       <h2>Welcome to Our School Portal 🎓</h2>
       <p>Explore academic resources, participate in quizzes, stay updated with notices, and connect through chat.</p>
     </div>
 
-    <!-- Bootstrap Course Carousel -->
     <div id="courseCarousel" class="carousel slide course-slider" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="2"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -292,12 +140,10 @@
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#courseCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon"></span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#courseCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon"></span>
       </button>
     </div>
   </main>
