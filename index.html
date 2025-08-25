@@ -6,44 +6,60 @@
   <title>School Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
-<header class="bg-blue-700 text-white shadow">
-  <div class="container mx-auto flex justify-between items-center p-4">
-    <h1 class="text-xl font-bold">School Dashboard</h1>
-    <nav class="space-x-4">
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="bg-blue-700 text-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center p-5">
+    <h1 class="text-2xl font-bold">School Dashboard</h1>
+    <nav class="hidden md:flex space-x-6 text-lg">
       <a href="chat.html" class="hover:text-yellow-300">Chat</a>
       <a href="quiz.html" class="hover:text-yellow-300">Quiz</a>
       <a href="notice.html" class="hover:text-yellow-300">Notices</a>
       <a href="upload.html" class="hover:text-yellow-300">Upload</a>
       <a href="admin.html" class="hover:text-yellow-300">Admin</a>
     </nav>
-    <div class="flex items-center space-x-2">
-      <small id="header-user"></small>
-      <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded hover:bg-red-600">Logout</button>
+    <div class="flex items-center space-x-3">
+      <small id="header-user" class="text-sm"></small>
+      <button onclick="logout()" class="bg-red-500 px-4 py-2 rounded-lg hover:bg-red-600">Logout</button>
     </div>
   </div>
 </header>
 
-<main class="container mx-auto p-6">
-  <h2 class="text-xl font-semibold mb-4">Welcome 👋</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white shadow rounded p-4 text-center">
-      <h3 class="font-bold mb-2">Chat Panel</h3>
-      <a href="chat.html" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Go</a>
+<!-- Main Content -->
+<main class="container mx-auto flex-grow px-6 py-10">
+  <h2 class="text-3xl font-semibold mb-8 text-center text-gray-700">Welcome 👋 Select a Panel</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- Card 1 -->
+    <div class="bg-white shadow-xl rounded-xl p-8 text-center hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/chat--v1.png" class="mx-auto mb-4"/>
+      <h3 class="text-xl font-bold mb-2">Chat Panel</h3>
+      <p class="text-gray-500 mb-4">Interact with classmates in real-time.</p>
+      <a href="chat.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">Go</a>
     </div>
-    <div class="bg-white shadow rounded p-4 text-center">
-      <h3 class="font-bold mb-2">Take Quiz</h3>
-      <a href="quiz.html" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Start</a>
+
+    <!-- Card 2 -->
+    <div class="bg-white shadow-xl rounded-xl p-8 text-center hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/quiz.png" class="mx-auto mb-4"/>
+      <h3 class="text-xl font-bold mb-2">Take Quiz</h3>
+      <p class="text-gray-500 mb-4">Practice and test your knowledge.</p>
+      <a href="quiz.html" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">Start</a>
     </div>
-    <div class="bg-white shadow rounded p-4 text-center">
-      <h3 class="font-bold mb-2">View Notices</h3>
-      <a href="notice.html" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Open</a>
+
+    <!-- Card 3 -->
+    <div class="bg-white shadow-xl rounded-xl p-8 text-center hover:scale-105 transition">
+      <img src="https://img.icons8.com/color/96/noticeboard.png" class="mx-auto mb-4"/>
+      <h3 class="text-xl font-bold mb-2">Notices</h3>
+      <p class="text-gray-500 mb-4">Check important announcements.</p>
+      <a href="notice.html" class="bg-yellow-500 text-white px-5 py-2 rounded-lg hover:bg-yellow-600">Open</a>
     </div>
   </div>
 </main>
 
-<footer class="bg-gray-800 text-center text-gray-400 p-4">
-  © 2025 Tapaman Senior High School | Powered by Sas Networks
+<!-- Footer -->
+<footer class="bg-gray-800 text-center text-gray-400 py-4 mt-auto">
+  © 2025 Tapaman Senior High School | Powered by Sas Network
 </footer>
 
 <script type="module" src="firebase.js"></script>
