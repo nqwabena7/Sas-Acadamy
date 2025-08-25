@@ -6,27 +6,23 @@
   <title>School Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset */
-    * {
+    /* Reset and Fonts */
+    body, html {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
       height: 100%;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       color: #fff;
       overflow: hidden;
     }
 
-    /* Background slider */
+    /* Background slider images */
     .bg-slider {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      z-index: -2;
+      z-index: -1;
       overflow: hidden;
     }
 
@@ -37,7 +33,7 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: bgSlideShow 18s infinite;
+      animation: slideShow 18s infinite;
     }
 
     .bg-slide:nth-child(1) {
@@ -53,22 +49,12 @@
       animation-delay: 12s;
     }
 
-    @keyframes bgSlideShow {
+    @keyframes slideShow {
       0% { opacity: 0; }
       10% { opacity: 1; }
       30% { opacity: 1; }
       40% { opacity: 0; }
       100% { opacity: 0; }
-    }
-
-    /* Overlay for better text contrast */
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: -1;
     }
 
     /* Header */
@@ -78,11 +64,12 @@
       align-items: center;
       background: rgba(0,0,0,0.6);
       padding: 15px 20px;
+      position: relative;
+      z-index: 10;
     }
 
     header h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
+      font-size: 1.5rem;
     }
 
     nav a {
@@ -96,43 +83,54 @@
       text-decoration: underline;
     }
 
-    /* Main Content */
+    /* Main Course Slider */
     main {
+      position: relative;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: calc(100% - 80px);
       text-align: center;
-      height: calc(100% - 100px);
-      padding: 0 20px;
+      overflow: hidden;
     }
 
-    .welcome-card {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 25px 35px;
-      border-radius: 10px;
-      max-width: 700px;
-      margin-bottom: 40px;
+    .course-slider {
+      width: 80%;
+      max-width: 900px;
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 12px;
+      animation: fadeSlide 1s ease-in-out;
     }
 
-    .welcome-card h2 {
+    .course-slider h2 {
       font-size: 2rem;
       margin-bottom: 10px;
+      color: #ffcc00;
     }
 
-    /* Slideshow Text for Courses & Notices */
-    .course-slider {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 15px 20px;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      animation: textFade 18s infinite;
+    .course-slider p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
-    @keyframes textFade {
-      0%, 33% { opacity: 1; }
-      34%, 100% { opacity: 0; }
+    .course-slider button {
+      background: #ffcc00;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .course-slider button:hover {
+      background: #e6b800;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     footer {
@@ -140,51 +138,30 @@
       bottom: 10px;
       width: 100%;
       text-align: center;
-      color: #ccc;
+      color: #ddd;
       font-size: 0.9rem;
+      z-index: 10;
     }
 
-    button {
-      background: #ffcc00;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #e6b800;
-    }
-
-    /* Responsive */
     @media(max-width: 768px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      nav a {
-        margin: 8px;
-        display: inline-block;
-      }
-      .welcome-card h2 { font-size: 1.5rem; }
+      nav a { margin: 0 6px; font-size: 14px; }
+      .course-slider { width: 90%; padding: 20px; }
+      .course-slider h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Background -->
+  <!-- Background Slider -->
   <div class="bg-slider">
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
   </div>
-  <div class="overlay"></div>
 
   <!-- Header -->
   <header>
-    <h1>Senior High School</h1>
+    <h1>School Dashboard</h1>
     <nav>
-      <a href="index.html">Home</a>
       <a href="chat.html">Chat</a>
       <a href="quiz.html">Quiz</a>
       <a href="notice.html">Notices</a>
@@ -196,45 +173,55 @@
     <div><small id="header-user">Guest</small> <button onclick="logout()">Logout</button></div>
   </header>
 
-  <!-- Main -->
+  <!-- Main Course Slider -->
   <main>
-    <div class="welcome-card">
-      <h2>Welcome to Our School Portal 🎓</h2>
-      <p>Access academic resources, join discussions, and stay informed with the latest updates.</p>
-    </div>
-
-    <!-- Dynamic Course Info Slider -->
-    <div class="course-slider" id="courseSlider">
-      Loading courses...
+    <div class="course-slider" id="course-slider">
+      <h2>Loading...</h2>
+      <p>Please wait</p>
     </div>
   </main>
 
   <footer>
-    <small>&copy; 2025 Senior High School | Designed for Excellence</small>
+    <small>&copy; 2025 Senior High School. Built for Netlify + Firebase</small>
   </footer>
 
   <script>
-    // Course/Notice Slider Logic
     const courses = [
-      "📚 New Term Begins: Check Your Academic Schedule!",
-      "🖥️ Online Quiz for Mathematics Opens Tomorrow!",
-      "🎉 Cultural Week Coming Soon - Join the Fun!",
-      "🎓 Admission 2025 is Open! Apply Today."
+      {
+        title: "Science Department",
+        description: "Explore our comprehensive science programs including Physics, Chemistry, and Biology, designed to prepare students for higher education.",
+        button: "Learn More"
+      },
+      {
+        title: "Arts & Humanities",
+        description: "Dive into literature, history, and creative arts. Our Arts programs develop critical thinking and creativity.",
+        button: "View Details"
+      },
+      {
+        title: "Business & Economics",
+        description: "Gain skills in accounting, finance, and business management to thrive in today's competitive economy.",
+        button: "Get Started"
+      }
     ];
 
-    let index = 0;
-    const courseSlider = document.getElementById('courseSlider');
+    let currentIndex = 0;
+    const slider = document.getElementById('course-slider');
 
-    function updateSlide() {
-      courseSlider.textContent = courses[index];
-      index = (index + 1) % courses.length;
+    function updateCourse() {
+      const course = courses[currentIndex];
+      slider.innerHTML = `
+        <h2>${course.title}</h2>
+        <p>${course.description}</p>
+        <button>${course.button}</button>
+      `;
+      currentIndex = (currentIndex + 1) % courses.length;
     }
 
-    updateSlide();
-    setInterval(updateSlide, 6000); // Change text every 6s
+    updateCourse();
+    setInterval(updateCourse, 6000); // Change every 6 seconds
 
     function logout() {
-      alert("Logged out!");
+      alert("Logging out...");
     }
   </script>
 </body>
