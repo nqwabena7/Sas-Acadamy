@@ -17,7 +17,7 @@
       font-family: "Poppins", sans-serif;
       color: #fff;
       overflow-x: hidden;
-      background-color: #000;
+      background: url('assets/images/bg1.jpeg') center/cover no-repeat; /* Default background */
     }
 
     /* Background Slider */
@@ -29,6 +29,7 @@
       z-index: -1;
       overflow: hidden;
     }
+
     .bg-slide {
       position: absolute;
       width: 100%;
@@ -36,18 +37,28 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: slideShow 18s infinite;
+      animation: slideShow 18s infinite ease-in-out;
     }
-    .bg-slide:nth-child(1) { background-image: url('assets/images/bg1.jpeg'); animation-delay: 4s; }
-    .bg-slide:nth-child(2) { background-image: url('assets/images/bg2.jpeg'); animation-delay: 12s; }
-    .bg-slide:nth-child(3) { background-image: url('assets/images/bg3.jpeg'); animation-delay: 16s; }
+
+    .bg-slide:nth-child(1) {
+      background-image: url('assets/images/bg1.jpeg');
+      animation-delay: 0s;
+    }
+
+    .bg-slide:nth-child(2) {
+      background-image: url('assets/images/bg2.jpeg');
+      animation-delay: 9s;
+    }
+
+    .bg-slide:nth-child(3) {
+      background-image: url('assets/images/bg3.jpeg');
+      animation-delay: 13s;
+    }
 
     @keyframes slideShow {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      40% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 0; }
+      0%, 100% { opacity: 0; }
+      10%, 30% { opacity: 1; }
+      40% { opacity: 0; }
     }
 
     header {
