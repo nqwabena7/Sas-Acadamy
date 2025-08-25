@@ -4,29 +4,40 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Upload Assignment</title>
-  <link rel="stylesheet" href="assets/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>Upload Assignment</h1>
+<body class="bg-gray-100 min-h-screen">
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Upload Assignment</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="chat.html">Chat</a>
-      <a href="notice.html">Notices</a>
+      <a href="index.html" class="hover:underline">Dashboard</a>
     </nav>
-    <button onclick="logout()">Logout</button>
-  </header>
-  <main>
-    <div class="card">
-      <input type="file" id="fileInput" />
-      <button onclick="uploadFile()">Upload</button>
-      <p id="upload-status"></p>
+    <div>
+      <small id="header-user" class="mr-2"></small>
+      <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
     </div>
-    <section class="card">
-      <h3>Your Uploads</h3>
-      <ul id="my-file-list"></ul>
-    </section>
+  </header>
+
+  <main class="p-6 max-w-lg mx-auto bg-white rounded shadow">
+    <h2 class="text-lg font-bold mb-4">Upload Your File</h2>
+    <input id="fileInput" type="file" class="mb-4"/>
+    <button id="uploadBtn" class="bg-green-600 text-white px-4 py-2 rounded">Upload</button>
+    <p id="status" class="mt-4 text-blue-600"></p>
   </main>
+
+  <script type="module">
+    import { app, auth } from "./firebase.js";
+    import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-storage.js";
+
+    const storage = getStorage(app);
+    document.getElementById("uploadBtn").addEventListener("click", async () => {
+      const file = document.getElementById("fileInput").files[0];
+      if (!file) return alert("Please select a file");
+      const fileRef = ref(storage, `assignments/${auth.currentUser.uid}_${file.name}`);
+      await uploadBytes(fileRef, file);
+      document.getElementById("status").textContent = "File uploaded successfully!";
+    });
+  </script>
   <script type="module" src="firebase.js"></script>
 </body>
 </html>
