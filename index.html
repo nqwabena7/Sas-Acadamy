@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header>
+    <h1>School Dashboard</h1>
+    <nav>
+      <a href="chat.html">Chat</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="notice.html">Notices</a>
+      <a href="upload.html">Upload</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div><small id="header-user"></small> <button onclick="logout()">Logout</button></div>
+  </header>
+  <main>
+    <div class="grid">
+      <div class="card"><h3>Welcome 👋</h3><p>Choose a panel above to get started.</p></div>
+      <div class="card"><h3>Tip</h3><p>Only admins can access the Admin panel. Ask your teacher to grant access.</p></div>
+    </div>
+  </main>
+  <footer><small class="muted">Built for Netlify + Firebase</small></footer>
+  <script type="module" src="firebase.js"></script>
+</body>
+</html>

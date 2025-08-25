@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="notice.html">Notices</a>
+      <a href="upload.html">Uploads</a>
+    </nav>
+    <button onclick="logout()">Logout</button>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Add New Notice</h2>
+      <input type="text" id="notice-title" placeholder="Notice Title"/>
+      <textarea id="notice-content" placeholder="Notice Content"></textarea>
+      <button onclick="addNotice()">Add Notice</button>
+    </section>
+
+    <section class="card">
+      <h2>Manage Notices</h2>
+      <ul id="notice-list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Uploaded Assignments</h2>
+      <ul id="file-list"></ul>
+    </section>
+  </main>
+  <script type="module" src="firebase.js"></script>
+</body>
+</html>

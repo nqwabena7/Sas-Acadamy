@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Assignment</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Upload Assignment</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="chat.html">Chat</a>
+      <a href="notice.html">Notices</a>
+    </nav>
+    <button onclick="logout()">Logout</button>
+  </header>
+  <main>
+    <div class="card">
+      <input type="file" id="fileInput" />
+      <button onclick="uploadFile()">Upload</button>
+      <p id="upload-status"></p>
+    </div>
+    <section class="card">
+      <h3>Your Uploads</h3>
+      <ul id="my-file-list"></ul>
+    </section>
+  </main>
+  <script type="module" src="firebase.js"></script>
+</body>
+</html>

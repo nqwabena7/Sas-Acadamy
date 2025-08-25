@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+  <main>
+    <div class="card" style="max-width:460px;margin:60px auto;">
+      <h2>Create Student Account</h2>
+      <input type="email" id="signup-email" placeholder="Email" required />
+      <input type="password" id="signup-password" placeholder="Password (6+ chars)" required />
+      <button onclick="signUp()">Sign Up</button>
+      <p><small>Have an account? <a href="login.html">Login</a></small></p>
+    </div>
+  </main>
+  <script type="module" src="firebase.js"></script>
+</body>
+</html>
