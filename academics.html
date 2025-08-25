@@ -8,11 +8,38 @@
 </head>
 <body class="bg-white text-slate-800 min-h-screen flex flex-col">
 
+  <!-- HEADER -->
   <header class="bg-indigo-950 text-white">
     <div class="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
       <h1 class="text-xl font-bold"><span class="text-amber-400">SHS</span> • Academics</h1>
-      <nav class="hidden sm:flex gap-6 text-sm">
+
+      <!-- Hamburger Button for Mobile -->
+      <button id="menu-btn" class="sm:hidden text-white text-2xl focus:outline-none">
+        ☰
+      </button>
+
+      <!-- Navigation Menu -->
+      <nav id="menu" class="hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm absolute sm:static bg-indigo-950 sm:bg-transparent w-full sm:w-auto left-0 top-[70px] sm:top-auto p-4 sm:p-0 border-t sm:border-0 border-indigo-800 z-50">
+        
         <a href="index.html" class="hover:text-amber-300">Home</a>
+        
+        <!-- Dropdown for Academics -->
+        <div class="relative group">
+          <button id="academics-btn" class="flex items-center gap-1 hover:text-amber-300">
+            Academics ▾
+          </button>
+          
+          <!-- Dropdown Menu -->
+          <div id="academics-menu" class="hidden sm:absolute left-0 mt-2 bg-white text-slate-800 rounded shadow-lg border w-40 z-50 sm:group-hover:block">
+            <ul class="text-sm">
+              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">Business</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">General Arts</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">Visual Art</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-amber-50">Technical</a></li>
+            </ul>
+          </div>
+        </div>
+
         <a href="admissions.html" class="hover:text-amber-300">Admissions</a>
         <a href="chat.html" class="hover:text-amber-300">Chat</a>
         <a href="quiz.html" class="hover:text-amber-300">Quiz</a>
@@ -21,6 +48,7 @@
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main class="flex-1">
     <section class="bg-gradient-to-r from-indigo-950 to-indigo-800 text-white">
       <div class="max-w-6xl mx-auto px-4 py-12">
@@ -65,7 +93,31 @@
     </section>
   </main>
 
-  <footer class="text-center text-slate-500 text-sm py-6 border-t">© 2025 Senior High School</footer>
+  <!-- FOOTER -->
+  <footer class="text-center text-slate-500 text-sm py-6 border-t">
+    © 2025 Senior High School
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    const academicsBtn = document.getElementById('academics-btn');
+    const academicsMenu = document.getElementById('academics-menu');
+
+    // Toggle mobile menu
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Toggle academics dropdown on mobile
+    academicsBtn.addEventListener('click', (e) => {
+      if (window.innerWidth < 640) { // Only for mobile
+        e.preventDefault();
+        academicsMenu.classList.toggle('hidden');
+      }
+    });
+  </script>
 
 </body>
 </html>
