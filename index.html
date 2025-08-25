@@ -94,67 +94,23 @@
       margin-bottom: 20px;
     }
 
-    /* Course Slider */
-    .course-slider {
-      background: rgba(0,0,0,0.6);
-      padding: 15px 25px;
-      border-radius: 10px;
-      max-width: 700px;
-      width: 90%;
-      position: relative;
-      overflow: hidden;
-      height: 120px;
-    }
-    .course-slide {
-      position: absolute;
-      width: 100%;
-      opacity: 0;
-      animation: courseSlide 18s infinite;
-    }
-    .course-slide:nth-child(1) { animation-delay: 0s; }
-    .course-slide:nth-child(2) { animation-delay: 6s; }
-    .course-slide:nth-child(3) { animation-delay: 12s; }
-
-    @keyframes courseSlide {
-      0% { opacity: 0; transform: translateY(10px); }
-      5% { opacity: 1; transform: translateY(0); }
-      28% { opacity: 1; transform: translateY(0); }
-      33% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 0; }
-    }
-
-    footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      color: #ddd;
-      font-size: 0.9rem;
-    }
-    button {
-      background: #ffcc00;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    button:hover { background: #e6b800; }
-
-    @media(max-width: 768px) {
-      nav a { margin: 0 5px; font-size: 13px; }
-      .welcome-card, .course-slider { padding: 15px; }
-      header h1 { font-size: 1rem; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Background Slider -->
-  <div class="bg-slider">
-    <div class="bg-slide"></div>
-    <div class="bg-slide"></div>
-    <div class="bg-slide"></div>
+    <!-- Course Slider -->
+<div class="course-slider">
+  <div class="course-track">
+    <div class="course-slide">
+      <h3>Science Department</h3>
+      <p>Physics, Chemistry, and Biology with advanced lab facilities and expert teachers.</p>
+    </div>
+    <div class="course-slide">
+      <h3>Business Department</h3>
+      <p>Accounting, Business Management, and Economics for future entrepreneurs.</p>
+    </div>
+    <div class="course-slide">
+      <h3>General Arts</h3>
+      <p>Literature, History, and Languages to develop critical thinking skills.</p>
+    </div>
   </div>
+</div>
 
   <header>
     <h1>School Dashboard</h1>
