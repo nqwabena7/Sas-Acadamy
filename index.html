@@ -31,11 +31,11 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: slideShow 24s infinite;
+      animation: slideShow 18s infinite;
     }
     .bg-slide:nth-child(1) { background-image: url('assets/images/bg1.jpeg'); animation-delay: 0s; }
-    .bg-slide:nth-child(2) { background-image: url('assets/images/bg2.jpeg'); animation-delay: 8s; }
-    .bg-slide:nth-child(3) { background-image: url('assets/images/bg3.jpeg'); animation-delay: 16s; }
+    .bg-slide:nth-child(2) { background-image: url('assets/images/bg2.jpeg'); animation-delay: 6s; }
+    .bg-slide:nth-child(3) { background-image: url('assets/images/bg3.jpeg'); animation-delay: 12s; }
 
     @keyframes slideShow {
       0% { opacity: 0; }
@@ -49,17 +49,30 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.6);
-      padding: 15px 20px;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
     }
-    header h1 { font-size: 1.5rem; }
+    header h1 { font-size: 1.4rem; margin: 0; }
+    nav {
+      flex-grow: 1;
+      text-align: center;
+    }
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0 12px;
+      margin: 0 10px;
       font-weight: 500;
     }
     nav a:hover { text-decoration: underline; }
+    header div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
     /* Main Content */
     main {
@@ -68,7 +81,9 @@
       align-items: center;
       text-align: center;
       flex-direction: column;
-      height: calc(100% - 80px);
+      height: 100%;
+      padding-top: 100px;
+      box-sizing: border-box;
     }
 
     .welcome-card {
@@ -88,22 +103,23 @@
       width: 90%;
       position: relative;
       overflow: hidden;
+      height: 120px;
     }
     .course-slide {
       position: absolute;
       width: 100%;
       opacity: 0;
-      animation: courseSlide 30s infinite;
+      animation: courseSlide 18s infinite;
     }
     .course-slide:nth-child(1) { animation-delay: 0s; }
-    .course-slide:nth-child(2) { animation-delay: 10s; }
-    .course-slide:nth-child(3) { animation-delay: 20s; }
+    .course-slide:nth-child(2) { animation-delay: 6s; }
+    .course-slide:nth-child(3) { animation-delay: 12s; }
 
     @keyframes courseSlide {
       0% { opacity: 0; transform: translateY(10px); }
       5% { opacity: 1; transform: translateY(0); }
-      30% { opacity: 1; transform: translateY(0); }
-      35% { opacity: 0; transform: translateY(-10px); }
+      28% { opacity: 1; transform: translateY(0); }
+      33% { opacity: 0; transform: translateY(-10px); }
       100% { opacity: 0; }
     }
 
@@ -126,8 +142,9 @@
     button:hover { background: #e6b800; }
 
     @media(max-width: 768px) {
-      nav a { margin: 0 6px; font-size: 14px; }
+      nav a { margin: 0 5px; font-size: 13px; }
       .welcome-card, .course-slider { padding: 15px; }
+      header h1 { font-size: 1rem; }
     }
   </style>
 </head>
