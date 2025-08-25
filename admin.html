@@ -4,36 +4,44 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Panel</title>
-  <link rel="stylesheet" href="assets/style.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>Admin Panel</h1>
+<body class="bg-gray-100 min-h-screen">
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Admin Panel</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="notice.html">Notices</a>
-      <a href="upload.html">Uploads</a>
+      <a href="index.html" class="hover:underline">Dashboard</a>
     </nav>
-    <button onclick="logout()">Logout</button>
+    <div>
+      <small id="header-user" class="mr-2"></small>
+      <button onclick="logout()" class="bg-red-500 px-3 py-1 rounded">Logout</button>
+    </div>
   </header>
-  <main>
-    <section class="card">
-      <h2>Add New Notice</h2>
-      <input type="text" id="notice-title" placeholder="Notice Title"/>
-      <textarea id="notice-content" placeholder="Notice Content"></textarea>
-      <button onclick="addNotice()">Add Notice</button>
-    </section>
 
-    <section class="card">
-      <h2>Manage Notices</h2>
-      <ul id="notice-list"></ul>
-    </section>
-
-    <section class="card">
-      <h2>Uploaded Assignments</h2>
-      <ul id="file-list"></ul>
-    </section>
+  <main class="p-6 max-w-lg mx-auto bg-white rounded shadow">
+    <h2 class="text-lg font-bold mb-4">Post a Notice</h2>
+    <input id="title" type="text" placeholder="Title" class="w-full border p-2 mb-3"/>
+    <textarea id="message" placeholder="Message" class="w-full border p-2 mb-3"></textarea>
+    <button id="postBtn" class="bg-blue-600 text-white px-4 py-2 rounded">Post Notice</button>
+    <p id="status" class="mt-4 text-green-600"></p>
   </main>
+
+  <script type="module">
+    import { app } from "./firebase.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
+    const db = getFirestore(app);
+    document.getElementById("postBtn").addEventListener("click", async () => {
+      const title = document.getElementById("title").value;
+      const message = document.getElementById("message").value;
+      await addDoc(collection(db, "notices"), {
+        title,
+        message,
+        timestamp: new Date()
+      });
+      document.getElementById("status").textContent = "Notice posted!";
+    });
+  </script>
   <script type="module" src="firebase.js"></script>
 </body>
 </html>
