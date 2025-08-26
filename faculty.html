@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Faculty • SHS</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: "Poppins", sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      background: #f9fafb;
+      font-family: 'Poppins', sans-serif;
     }
-    header {
-      background: #0f172a;
+    .faculty-hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/images/faculty-bg.jpeg') center/cover no-repeat;
       color: #fff;
+      padding: 80px 0;
+      text-align: center;
     }
-    header a {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 15px;
-    }
-    header a:hover {
-      color: #facc15;
+    .faculty-card img {
+      object-fit: cover;
+      height: 220px;
+      width: 100%;
     }
     .faculty-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
-    .faculty-card:hover {
-      transform: translateY(-5px);
-    }
-    .faculty-img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-    footer {
-      background: #0f172a;
-      color: #f1f1f1;
+    .footer {
+      background: #1e1e2f;
+      color: #ccc;
       text-align: center;
-      padding: 20px 0;
+      padding: 15px 0;
       margin-top: 40px;
     }
   </style>
@@ -50,62 +39,66 @@
 <body>
 
   <!-- Header -->
-  <header class="py-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <h1 class="h4 mb-0"><span style="color:#facc15;">SHS</span> • Faculty</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="admission.html">Admissions</a>
-        <a href="academics.html">Academics</a>
-        <a href="faculty.html" class="fw-bold text-warning">Faculty</a>
-        <a href="school-life.html">School Life</a>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="text-warning">SHS</span> Faculty</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="admission.html" class="nav-link">Admissions</a></li>
+          <li class="nav-item"><a href="school-life.html" class="nav-link">School Life</a></li>
+          <li class="nav-item"><a href="faculty.html" class="nav-link active">Faculty</a></li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Hero -->
-  <section class="bg-dark text-white text-center py-5">
+  <section class="faculty-hero">
     <div class="container">
-      <h2 class="display-6 fw-bold">Meet Our Faculty</h2>
-      <p class="lead">Dedicated educators shaping the leaders of tomorrow.</p>
+      <h1 class="display-5 fw-bold">Meet Our Faculty</h1>
+      <p class="lead">Dedicated educators leading our academic excellence.</p>
     </div>
   </section>
 
   <!-- Faculty Grid -->
-  <section class="container py-5">
-    <div class="row g-4">
-      <!-- Teacher 1 -->
-      <div class="col-md-4">
-        <div class="faculty-card text-center">
-          <img src="assets/images/faculty1.jpg" alt="Science Head" class="faculty-img">
-          <div class="p-3">
-            <h5 class="fw-bold">Dr. Kwame Mensah</h5>
-            <p class="text-muted">Head of Science Department</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#facultyModal1">View Details</button>
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Teacher 1 -->
+        <div class="col-md-4">
+          <div class="card faculty-card shadow-sm">
+            <img src="https://via.placeholder.com/400x220" alt="Teacher 1" class="card-img-top">
+            <div class="card-body text-center">
+              <h5 class="card-title">Mr. John Doe</h5>
+              <p class="text-muted mb-2">Head of Science Department</p>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#facultyModal1">View Profile</button>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Teacher 2 -->
-      <div class="col-md-4">
-        <div class="faculty-card text-center">
-          <img src="assets/images/faculty2.jpg" alt="Business Head" class="faculty-img">
-          <div class="p-3">
-            <h5 class="fw-bold">Mrs. Ama Boateng</h5>
-            <p class="text-muted">Head of Business Department</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#facultyModal2">View Details</button>
+        <!-- Teacher 2 -->
+        <div class="col-md-4">
+          <div class="card faculty-card shadow-sm">
+            <img src="https://via.placeholder.com/400x220" alt="Teacher 2" class="card-img-top">
+            <div class="card-body text-center">
+              <h5 class="card-title">Ms. Sarah Brown</h5>
+              <p class="text-muted mb-2">Business Department</p>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#facultyModal2">View Profile</button>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Teacher 3 -->
-      <div class="col-md-4">
-        <div class="faculty-card text-center">
-          <img src="assets/images/faculty3.jpg" alt="General Arts Head" class="faculty-img">
-          <div class="p-3">
-            <h5 class="fw-bold">Mr. Kojo Asante</h5>
-            <p class="text-muted">Head of General Arts Department</p>
-            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#facultyModal3">View Details</button>
+        <!-- Teacher 3 -->
+        <div class="col-md-4">
+          <div class="card faculty-card shadow-sm">
+            <img src="https://via.placeholder.com/400x220" alt="Teacher 3" class="card-img-top">
+            <div class="card-body text-center">
+              <h5 class="card-title">Mr. Daniel Smith</h5>
+              <p class="text-muted mb-2">General Arts Department</p>
+              <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#facultyModal3">View Profile</button>
+            </div>
           </div>
         </div>
       </div>
@@ -113,59 +106,58 @@
   </section>
 
   <!-- Modals -->
-  <!-- Modal 1 -->
   <div class="modal fade" id="facultyModal1" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Dr. Kwame Mensah</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-header">
+          <h5 class="modal-title">Mr. John Doe</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <p><strong>Department:</strong> Science</p>
-          <p>Dr. Mensah is passionate about STEM education and leads innovative science programs to prepare students for future careers.</p>
+          <p>Mr. John Doe has 15 years of experience in Physics and Chemistry education and leads our STEM initiatives.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal 2 -->
   <div class="modal fade" id="facultyModal2" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Mrs. Ama Boateng</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-header">
+          <h5 class="modal-title">Ms. Sarah Brown</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <p><strong>Department:</strong> Business</p>
-          <p>Mrs. Boateng focuses on entrepreneurship and financial literacy, guiding students to become future business leaders.</p>
+          <p>Sarah specializes in accounting and entrepreneurship, mentoring students in real-world projects.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal 3 -->
   <div class="modal fade" id="facultyModal3" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Mr. Kojo Asante</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <div class="modal-header">
+          <h5 class="modal-title">Mr. Daniel Smith</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <p><strong>Department:</strong> General Arts</p>
-          <p>Mr. Asante promotes critical thinking, debate, and public speaking skills in students pursuing the arts.</p>
+          <p>Daniel brings expertise in Literature and History, guiding students in research and public speaking.</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer>
-    <p>© 2025 Senior High School | All Rights Reserved</p>
+  <footer class="footer">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Senior High School. All Rights Reserved.</p>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
