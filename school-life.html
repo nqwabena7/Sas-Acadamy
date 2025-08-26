@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>School Dashboard • School Life</title>
 
-  <!-- Bootstrap CSS & JS -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
   <style>
     body, html {
@@ -43,7 +42,6 @@
 
     main { padding-top: 100px; min-height: calc(100vh - 140px); }
 
-    /* Hero Section */
     .hero {
       background: rgba(0,0,0,0.45);
       text-align: center;
@@ -55,7 +53,6 @@
     .hero h2 { font-size: 2rem; margin-bottom: 15px; }
     .hero p { font-size: 1.1rem; color: #f0f0f0; }
 
-    /* Activities Section */
     .activities {
       max-width: 1000px;
       margin: 40px auto;
@@ -64,11 +61,14 @@
       gap: 20px;
       padding: 0 20px;
     }
+
     .activity-card {
       background: rgba(0,0,0,0.55);
       border-radius: 12px;
       padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
     }
     .activity-card:hover {
       transform: translateY(-5px);
@@ -105,7 +105,7 @@
       <a href="notice.html">Notices</a>
       <a href="academics.html">Academic</a>
       <a href="admission.html">Admission</a>
-      <a href="school-life.html">School Life</a>
+      <a href="school-life.html" class="active">School Life</a>
       <a href="faculty.html">Our Faculties</a>
       <a href="admin.html">Admin</a>
     </nav>
@@ -116,30 +116,28 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
     <section class="hero">
       <h2>Life at Our School</h2>
       <p>Engaging activities, a vibrant community, and opportunities for personal growth make our students excel beyond academics.</p>
     </section>
 
-    <!-- Activities Section -->
     <section class="activities">
-      <div class="activity-card">
+      <a href="clubs.html" class="activity-card text-decoration-none text-white">
         <h3>Clubs & Societies</h3>
         <p>Debate, Science Club, Robotics, Drama, Music, and more to nurture your talents.</p>
-      </div>
-      <div class="activity-card">
+      </a>
+      <a href="sports.html" class="activity-card text-decoration-none text-white">
         <h3>Sports & Games</h3>
         <p>Football, Basketball, Athletics, and Inter-school competitions for physical development and teamwork.</p>
-      </div>
-      <div class="activity-card">
+      </a>
+      <a href="community.html" class="activity-card text-decoration-none text-white">
         <h3>Community Service</h3>
         <p>Volunteer programs, environmental initiatives, and outreach projects to instill responsibility and leadership.</p>
-      </div>
-      <div class="activity-card">
+      </a>
+      <a href="cultural.html" class="activity-card text-decoration-none text-white">
         <h3>Cultural Events</h3>
         <p>Annual concerts, exhibitions, and cultural days celebrating diversity and creativity.</p>
-      </div>
+      </a>
     </section>
   </main>
 
