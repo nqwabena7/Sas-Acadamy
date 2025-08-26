@@ -1,172 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>School Dashboard • School Life</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Lightbox CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
   <style>
-    body {
+    body, html {
+      margin: 0;
+      padding: 0;
       font-family: "Poppins", sans-serif;
-      background: #f8f9fa;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: #212529;
-      padding: 15px;
-      position: fixed;
-      top: 0;
+      color: #fff;
+      min-height: 100%;
       width: 100%;
-      z-index: 1000;
+      background: url('assets/images/school-life-bg.jpeg') center/cover no-repeat fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 20px;
+      position: fixed;
+      top:0;
+      width:100%;
+      z-index:10;
+      flex-wrap: wrap;
     }
-    header h1 {
-      color: #fff;
-      font-size: 1.4rem;
-      margin: 0;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    nav a.active,
-    nav a:hover {
-      color: #0d6efd;
-    }
-    main {
-      padding-top: 100px;
-    }
-    section {
-      padding: 60px 20px;
+
+    header h1 { font-size:1.4rem; margin:0; }
+    nav { flex-grow:1; text-align:center; }
+    nav a { color:#fff; text-decoration:none; margin:0 10px; font-weight:500; }
+    nav a:hover { text-decoration: underline; }
+    header div { display:flex; align-items:center; gap:10px; }
+
+    main { padding-top: 100px; min-height: calc(100vh - 140px); }
+
+    /* Hero Section */
+    .hero {
+      background: rgba(0,0,0,0.45);
       text-align: center;
+      padding: 80px 20px;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 900px;
     }
-    section h2 {
-      margin-bottom: 30px;
-      color: #333;
-    }
-    .gallery {
+    .hero h2 { font-size: 2rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.1rem; color: #f0f0f0; }
+
+    /* Activities Section */
+    .activities {
+      max-width: 1000px;
+      margin: 40px auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 0 20px;
     }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      background: #212529;
-      color: #fff;
-      text-align: center;
+    .activity-card {
+      background: rgba(0,0,0,0.55);
+      border-radius: 12px;
       padding: 20px;
-      margin-top: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+    .activity-card h3 { margin-bottom: 10px; color: #ffcc00; }
+    .activity-card p { font-size: 0.95rem; color: #f1f1f1; }
+
+    footer {
+      text-align:center;
+      color:#fff;
+      font-size:0.95rem;
+      padding:25px 10px;
+      background: rgba(0,0,0,0.75);
+      position: relative;
+      z-index: 10;
+    }
+
+    @media(max-width:768px){
+      .hero h2 { font-size:1.6rem; }
+      .hero p { font-size:1rem; }
+      .activity-card h3 { font-size:1.1rem; }
+      .activity-card p { font-size:0.9rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>School Life</h1>
+    <h1>School Dashboard</h1>
     <nav>
-      <a href="#clubs" class="nav-link">Clubs</a>
-      <a href="#sports" class="nav-link">Sports</a>
-      <a href="#community" class="nav-link">Community</a>
-      <a href="#cultural" class="nav-link">Cultural</a>
+      <a href="chat.html">Chat</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="notice.html">Notices</a>
+      <a href="academics.html">Academic</a>
+      <a href="admission.html">Admission</a>
+      <a href="school-life.html">School Life</a>
+      <a href="faculty.html">Our Faculties</a>
+      <a href="admin.html">Admin</a>
     </nav>
+    <div>
+      <small id="header-user">Guest</small>
+      <button onclick="logout()">Logout</button>
+    </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section>
+    <!-- Hero Section -->
+    <section class="hero">
       <h2>Life at Our School</h2>
-      <p class="text-muted">Explore our vibrant activities that make learning fun and inspiring.</p>
+      <p>Engaging activities, a vibrant community, and opportunities for personal growth make our students excel beyond academics.</p>
     </section>
 
-    <!-- Clubs Section -->
-    <section id="clubs">
-      <h2>Clubs & Societies</h2>
-      <div class="gallery">
-        <a href="assets/images/clubs1.jpg" data-lightbox="clubs"><img src="assets/images/clubs1.jpg" alt="Clubs"></a>
-        <a href="assets/images/clubs2.jpg" data-lightbox="clubs"><img src="assets/images/clubs2.jpg" alt="Clubs"></a>
-        <a href="assets/images/clubs3.jpg" data-lightbox="clubs"><img src="assets/images/clubs3.jpg" alt="Clubs"></a>
-      </div>
-    </section>
-
-    <!-- Sports Section -->
-    <section id="sports">
-      <h2>Sports & Games</h2>
-      <div class="gallery">
-        <a href="assets/images/sports1.jpg" data-lightbox="sports"><img src="assets/images/sports1.jpg" alt="Sports"></a>
-        <a href="assets/images/sports2.jpg" data-lightbox="sports"><img src="assets/images/sports2.jpg" alt="Sports"></a>
-        <a href="assets/images/sports3.jpg" data-lightbox="sports"><img src="assets/images/sports3.jpg" alt="Sports"></a>
-      </div>
-    </section>
-
-    <!-- Community Section -->
-    <section id="community">
-      <h2>Community Service</h2>
-      <div class="gallery">
-        <a href="assets/images/community1.jpg" data-lightbox="community"><img src="assets/images/community1.jpg" alt="Community"></a>
-        <a href="assets/images/community2.jpg" data-lightbox="community"><img src="assets/images/community2.jpg" alt="Community"></a>
-        <a href="assets/images/community3.jpg" data-lightbox="community"><img src="assets/images/community3.jpg" alt="Community"></a>
-      </div>
-    </section>
-
-    <!-- Cultural Section -->
-    <section id="cultural">
-      <h2>Cultural Events</h2>
-      <div class="gallery">
-        <a href="assets/images/cultural1.jpg" data-lightbox="cultural"><img src="assets/images/cultural1.jpg" alt="Cultural"></a>
-        <a href="assets/images/cultural2.jpg" data-lightbox="cultural"><img src="assets/images/cultural2.jpg" alt="Cultural"></a>
-        <a href="assets/images/cultural3.jpg" data-lightbox="cultural"><img src="assets/images/cultural3.jpg" alt="Cultural"></a>
-      </div>
+    <!-- Activities Section -->
+    <section class="activities">
+      <a href="clubs.html" class="activity-card" style="text-decoration:none; color:inherit;">
+        <h3>Clubs & Societies</h3>
+        <p>Debate, Science Club, Robotics, Drama, Music, and more to nurture your talents.</p>
+      </a>
+      <a href="sports.html" class="activity-card" style="text-decoration:none; color:inherit;">
+        <h3>Sports & Games</h3>
+        <p>Football, Basketball, Athletics, and Inter-school competitions for physical development and teamwork.</p>
+      </a>
+      <a href="community.html" class="activity-card" style="text-decoration:none; color:inherit;">
+        <h3>Community Service</h3>
+        <p>Volunteer programs, environmental initiatives, and outreach projects to instill responsibility and leadership.</p>
+      </a>
+      <a href="cultural.html" class="activity-card" style="text-decoration:none; color:inherit;">
+        <h3>Cultural Events</h3>
+        <p>Annual concerts, exhibitions, and cultural days celebrating diversity and creativity.</p>
+      </a>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Shining Senior High School | Powered by Sas Networks</p>
+    <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Lightbox JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-  <script>
-    // Highlight active link based on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          current = section.getAttribute('id');
-        }
-      });
-
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
 </body>
 </html>
