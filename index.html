@@ -1,139 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Dashboard • Home</title>
-
-  <!-- Bootstrap CSS & JS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-
-  <!-- Font Awesome for Social Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - School Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       padding: 0;
+      font-family: 'Poppins', sans-serif;
       height: 100%;
-      font-family: "Poppins", sans-serif;
-      color: #fff;
-      overflow-x: hidden;
-      background: #000; /* Prevent white flash */
     }
 
-    /* Background Slider */
+    /* Fullscreen Background Slider */
     .bg-slider {
       position: fixed;
-      top:0; left:0;
-      width:100%;
-      height:100%;
-      z-index:-1;
-      background: #000; /* Background color for transition */
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
     }
 
     .bg-slide {
       position: absolute;
-      width:100%;
-      height:100%;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: slideShow 18s infinite;
-      transition: opacity 1s ease-in-out;
+      animation: slide 18s infinite;
     }
 
-    .bg-slide:nth-child(1) { background-image: url('assets/images/bg1.jpeg'); animation-delay: 0s; }
-    .bg-slide:nth-child(2) { background-image: url('assets/images/bg2.jpeg'); animation-delay: 6s; }
-    .bg-slide:nth-child(3) { background-image: url('assets/images/bg3.jpeg'); animation-delay: 12s; }
-
-    @keyframes slideShow {
-      0%, 33.33%, 100% { opacity: 0; }
-      11%, 22% { opacity: 1; }
+    .bg-slide:nth-child(1) {
+      background-image: url('assets/images/bg1.jpeg');
+      animation-delay: 0s;
+    }
+    .bg-slide:nth-child(2) {
+      background-image: url('assets/images/bg2.jpeg');
+      animation-delay: 6s;
+    }
+    .bg-slide:nth-child(3) {
+      background-image: url('assets/images/bg3.jpeg');
+      animation-delay: 12s;
     }
 
-    header {
+    @keyframes slide {
+      0% { opacity: 0; }
+      8% { opacity: 1; }
+      33% { opacity: 1; }
+      41% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Overlay */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.7);
-      padding: 10px 20px;
-      position: fixed;
-      top:0; width:100%;
-      z-index:10; flex-wrap: wrap;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
     }
 
-    header h1 { font-size:1.4rem; margin:0; }
-    nav { flex-grow:1; text-align:center; }
-    nav a { color:#fff; text-decoration:none; margin:0 10px; font-weight:500; }
-    nav a:hover { text-decoration:underline; }
-    header div { display:flex; align-items:center; gap:10px; }
-
-    main {
-      display:flex; justify-content:center; align-items:center; text-align:center;
-      flex-direction:column; min-height:100vh; padding-top:100px; box-sizing:border-box;
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
     }
 
-    .welcome-card {
-      background: rgba(0,0,0,0.6);
-      padding: 20px 30px;
-      border-radius:10px;
-      max-width:700px; width:90%; margin-bottom:30px;
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
 
-    .course-slider { max-width:700px; width:90%; margin-bottom:30px; }
-    .course-card {
-      background: rgba(0,0,0,0.6);
-      padding:20px;
-      border-radius:10px;
-      color:#fff;
-      height:150px;
-      display:flex; flex-direction:column; justify-content:center;
+    .btn-main {
+      background: #f8d210;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      transition: 0.3s ease;
     }
-
-    .carousel-indicators [data-bs-target] { background-color: #ffcc00; }
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon { filter: invert(1); }
-
-    button { background: #ffcc00; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold; }
-    button:hover { background:#e6b800; }
+    .btn-main:hover {
+      background: #ffc107;
+      color: #000;
+    }
 
     footer {
-      background: rgba(0,0,0,0.85);
-      padding: 20px;
-      text-align:center;
-      color:#ddd;
-      font-size:0.9rem;
-      margin-top:40px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      position: relative;
     }
 
-    .footer-contact {
-      margin-top: 15px;
-    }
-
-    .social-icons a {
-      color: #ffcc00;
-      margin: 0 10px;
-      font-size: 1.2rem;
-      text-decoration: none;
-    }
-    .social-icons a:hover {
-      color: #e6b800;
-    }
-
-    @media(max-width:768px){
-      body, html { font-size:14px; }
-      header { flex-direction:column; align-items:flex-start; padding:10px; }
-      header h1 { font-size:1.1rem; margin-bottom:5px; }
-      nav { width:100%; display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:5px; }
-      nav a { margin:5px; font-size:13px; display:inline-block; }
-      header div { justify-content:space-between; width:100%; flex-wrap:wrap; gap:5px; }
-      .welcome-card, .course-slider { width:100%; max-width:100%; padding:15px; }
-      .course-card h3 { font-size:1rem; }
-      .course-card p { font-size:0.9rem; }
-      button { font-size:13px; padding:6px 12px; }
-      footer { font-size:0.8rem; }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -144,79 +124,42 @@
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
+    <div class="overlay"></div>
   </div>
 
-  <header>
-    <h1>School Dashboard</h1>
-    <nav>
-      <a href="chat.html">Chat</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="notice.html">Notices</a>
-      <a href="academics.html">Academic</a>
-      <a href="admission.html">Admission</a>
-      <a href="school-life.html">School Life</a>
-      <a href="faculty.html">Our Faculties</a>
-      <a href="admin.html">Admin</a>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">My School</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="admission.html">Admissions</a></li>
+          <li class="nav-item"><a class="nav-link" href="school-life.html">School Life</a></li>
+          <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
     <div>
-      <small id="header-user">Guest</small>
-      <button onclick="logout()">Logout</button>
+      <h1>Welcome to Our School</h1>
+      <p>Empowering Students for a Brighter Future</p>
+      <a href="admission.html" class="btn-main">Apply Now</a>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <div class="welcome-card">
-      <h2>Welcome to Our School Portal 🎓</h2>
-      <p>Explore academic resources, participate in quizzes, stay updated with notices, and connect through chat.</p>
-    </div>
-
-    <div id="courseCarousel" class="carousel slide course-slider" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
-        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="2"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="course-card">
-            <h3>Science Department</h3>
-            <p>Physics, Chemistry, and Biology with advanced lab facilities and expert teachers.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="course-card">
-            <h3>Business Department</h3>
-            <p>Accounting, Business Management, and Economics for future entrepreneurs.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="course-card">
-            <h3>General Arts</h3>
-            <p>Literature, History, and Languages to develop critical thinking skills.</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#courseCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#courseCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
-  </main>
-
+  <!-- Footer -->
   <footer>
-    <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
-    <div class="footer-contact">
-      <p>📍 Location: Tapa Amanya, Ghana | 📞 +233 59 832 4814 | ✉️ info@shiningshs.edu.gh</p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
+    <p>&copy; 2025 My School. All rights reserved.</p>
   </footer>
 
-  <script type="module" src="firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
