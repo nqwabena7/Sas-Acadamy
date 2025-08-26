@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>School Dashboard • Admission</title>
 
   <!-- Bootstrap CSS & JS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
   <style>
@@ -26,13 +26,14 @@
     body::before {
       content: "";
       position: fixed;
-      top:0; left:0;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.55);
       z-index: 0;
     }
 
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -40,20 +41,26 @@
       background: rgba(0,0,0,0.75);
       padding: 10px 20px;
       position: fixed;
-      top:0;
-      width:100%;
-      z-index:10;
+      top: 0;
+      width: 100%;
+      z-index: 10;
       flex-wrap: wrap;
     }
-
-    header h1 { font-size:1.4rem; margin:0; }
-    nav { flex-grow:1; text-align:center; }
-    nav a { color:#fff; text-decoration:none; margin:0 10px; font-weight:500; }
+    header h1 { font-size: 1.4rem; margin: 0; }
+    nav { flex-grow: 1; text-align: center; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+    }
     nav a:hover { text-decoration: underline; }
-    header div { display:flex; align-items:center; gap:10px; }
+    header div { display: flex; align-items: center; gap: 10px; }
 
-    main { padding-top: 100px; position: relative; z-index:1; }
+    /* Main Content */
+    main { padding-top: 100px; position: relative; z-index: 1; }
 
+    /* Hero */
     .hero {
       background: rgba(0,0,0,0.5);
       text-align: center;
@@ -62,15 +69,19 @@
       margin: 20px auto;
       max-width: 900px;
     }
-    .hero h2 { font-size:2rem; margin-bottom: 15px; color:#ffcc00; }
-    .hero p { font-size:1.1rem; color:#f0f0f0; }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #ffcc00;
+    }
+    .hero p { font-size: 1.1rem; color: #f0f0f0; }
 
+    /* Admission Info Cards */
     .admission-info {
       max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
     }
-
     .admission-card {
       background: rgba(0,0,0,0.55);
       border-radius: 12px;
@@ -82,7 +93,20 @@
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
-    .admission-card h3 { color:#ffcc00; }
+    .admission-card h3 { color: #ffcc00; }
+
+    .apply-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background: #ffcc00;
+      color: #000;
+      padding: 8px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .apply-btn:hover { background: #e6b800; }
 
     /* Faculty Section */
     .faculty-section {
@@ -118,15 +142,20 @@
       margin-bottom: 10px;
       border: 3px solid #ffcc00;
     }
-    .faculty-card h4 { margin-bottom: 5px; color:#fff; }
-    .faculty-card small { display:block; color:#ffcc00; margin-bottom: 10px; }
-    .faculty-card p { font-size:0.9rem; color:#ddd; }
+    .faculty-card h4 { margin-bottom: 5px; color: #fff; }
+    .faculty-card small {
+      display: block;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    .faculty-card p { font-size: 0.9rem; color: #ddd; }
 
+    /* Footer */
     footer {
-      text-align:center;
-      color:#fff;
-      font-size:0.95rem;
-      padding:25px 10px;
+      text-align: center;
+      color: #fff;
+      font-size: 0.95rem;
+      padding: 25px 10px;
       background: rgba(0,0,0,0.75);
       margin-top: 30px;
     }
@@ -141,22 +170,24 @@
     <a href="quiz.html">Quiz</a>
     <a href="notice.html">Notices</a>
     <a href="academics.html">Academic</a>
-    <a href="admission.html">Admission</a>
+    <a href="admission.html" class="text-warning">Admission</a>
     <a href="school-life.html">School Life</a>
     <a href="admin.html">Admin</a>
   </nav>
   <div>
     <small id="header-user">Guest</small>
-    <button onclick="logout()">Logout</button>
+    <button class="btn btn-sm btn-warning" onclick="logout()">Logout</button>
   </div>
 </header>
 
 <main>
+  <!-- Hero Section -->
   <section class="hero">
     <h2>Admissions 2025/2026</h2>
     <p>Join Shining Senior High School – excellence in academics, sports, and personal development.</p>
   </section>
 
+  <!-- Admission Information -->
   <section class="admission-info">
     <div class="admission-card">
       <h3>Admission Requirements</h3>
@@ -169,7 +200,11 @@
     </div>
     <div class="admission-card">
       <h3>Important Dates</h3>
-      <p>Application opens: 1st September 2025<br>Application closes: 30th November 2025<br>Entrance exams: 15th December 2025</p>
+      <p>
+        Application opens: 1st September 2025<br>
+        Application closes: 30th November 2025<br>
+        Entrance exams: 15th December 2025
+      </p>
     </div>
     <div class="admission-card">
       <h3>Contact Information</h3>
@@ -210,7 +245,7 @@
 </main>
 
 <footer>
-  <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
+  <small>&copy; 2025 Shining Senior High School | Powered by Sas Networks</small>
 </footer>
 
 </body>
