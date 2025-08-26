@@ -82,21 +82,30 @@
 
     .hero p {
       font-size: 1.2rem;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
+    /* Circular Button */
     .btn-main {
       background: #f8d210;
       color: #000;
       font-weight: bold;
       border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      text-decoration: none;
       transition: 0.3s ease;
     }
+
     .btn-main:hover {
       background: #ffc107;
       color: #000;
+      transform: scale(1.1);
     }
 
     footer {
@@ -151,13 +160,13 @@
     <div>
       <h1>Welcome to Our School</h1>
       <p>Empowering Students for a Brighter Future</p>
-      <a href="admission.html" class="btn-main">Apply Now</a>
+      <a href="admission.html" class="btn-main" title="Apply Now">+</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 My School. All rights reserved.</p>
+    <p>&copy; 2025 Shining Academy. All rights reserved.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
