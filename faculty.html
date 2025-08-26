@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Faculty • SHS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: url('assets/images/faculty-hero.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+    .faculty-card img {
+      height: 250px;
+      object-fit: cover;
+    }
+    footer {
+      background: #111827;
+      color: #f3f4f6;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="bg-dark text-white py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="h4 mb-0"><span class="text-warning">SHS</span> • Faculty</h1>
+      <nav>
+        <a href="index.html" class="text-white me-3">Home</a>
+        <a href="admissions.html" class="text-white me-3">Admissions</a>
+        <a href="academics.html" class="text-white me-3">Academics</a>
+        <a href="school-life.html" class="text-white me-3">School Life</a>
+        <a href="faculty.html" class="text-warning fw-bold">Faculty</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2 class="display-5 fw-bold">Meet Our Faculty</h2>
+  </section>
+
+  <!-- FACULTY GRID -->
+  <section class="container py-5">
+    <div class="row g-4">
+      <!-- Teacher 1 -->
+      <div class="col-md-4">
+        <div class="card faculty-card shadow-sm">
+          <img src="assets/images/science-teacher.jpg" class="card-img-top" alt="Science Teacher">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mr. John Doe</h5>
+            <p class="text-muted">Head of Science Department</p>
+            <p class="card-text small">"We empower students to think critically and innovate through science."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Teacher 2 -->
+      <div class="col-md-4">
+        <div class="card faculty-card shadow-sm">
+          <img src="assets/images/business-teacher.jpg" class="card-img-top" alt="Business Teacher">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mrs. Sarah Smith</h5>
+            <p class="text-muted">Business Department</p>
+            <p class="card-text small">"Shaping future entrepreneurs through business principles."</p>
+          </div>
+        </div>
+      </div>
+      <!-- Teacher 3 -->
+      <div class="col-md-4">
+        <div class="card faculty-card shadow-sm">
+          <img src="assets/images/arts-teacher.jpg" class="card-img-top" alt="General Arts Teacher">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mr. David Brown</h5>
+            <p class="text-muted">General Arts Department</p>
+            <p class="card-text small">"We nurture creativity and leadership through the humanities."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Senior High School • All Rights Reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
