@@ -8,13 +8,14 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f8f9fa;
+      background: #ffffff; /* White background */
+      color: #212529; /* Dark text for readability */
     }
     .hero {
       background: url('assets/images/faculty-bg.jpg') center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
     }
     .card {
       border-radius: 10px;
@@ -22,6 +23,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
     .card-img-top {
       height: 250px;
@@ -30,11 +32,16 @@
     .card-body {
       flex-grow: 1;
     }
+    .btn-primary {
+      background: #007bff;
+      border: none;
+    }
     footer {
       background: #343a40;
       color: #fff;
       text-align: center;
-      padding: 15px;
+      padding: 10px; /* Reduced footer padding */
+      font-size: 14px;
     }
     @media (max-width: 768px) {
       .hero {
@@ -79,7 +86,7 @@
       <!-- Teacher 1 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="assets/images/faculty/teacher1.jpg" class="card-img-top" alt="Teacher 1">
+          <img src="assets/images/faculty/teacher1.jpg" onerror="this.src='assets/images/placeholder.jpg'" class="card-img-top" alt="Teacher 1">
           <div class="card-body text-center">
             <h5 class="card-title">John Doe</h5>
             <p class="card-text">Head of Science Department</p>
@@ -91,7 +98,7 @@
       <!-- Teacher 2 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="assets/images/faculty/teacher2.jpg" class="card-img-top" alt="Teacher 2">
+          <img src="assets/images/faculty/teacher2.jpg" onerror="this.src='assets/images/placeholder.jpg'" class="card-img-top" alt="Teacher 2">
           <div class="card-body text-center">
             <h5 class="card-title">Mary Smith</h5>
             <p class="card-text">Mathematics Department</p>
@@ -103,7 +110,7 @@
       <!-- Teacher 3 -->
       <div class="col-md-4">
         <div class="card">
-          <img src="assets/images/faculty/teacher3.jpg" class="card-img-top" alt="Teacher 3">
+          <img src="assets/images/faculty/teacher3.jpg" onerror="this.src='assets/images/placeholder.jpg'" class="card-img-top" alt="Teacher 3">
           <div class="card-body text-center">
             <h5 class="card-title">James Brown</h5>
             <p class="card-text">English Department</p>
@@ -114,6 +121,7 @@
     </div>
   </div>
 
+  <!-- Teacher Modals -->
   <!-- Teacher 1 Modal -->
   <div class="modal fade" id="teacher1Modal" tabindex="-1">
     <div class="modal-dialog">
@@ -123,7 +131,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <img src="assets/images/faculty/teacher1.jpg" class="img-fluid mb-3" alt="Teacher 1">
+          <img src="assets/images/faculty/teacher1.jpg" onerror="this.src='assets/images/placeholder.jpg'" class="img-fluid mb-3" alt="Teacher 1">
           <p>John Doe is the Head of the Science Department with over 15 years of experience in teaching and curriculum development.</p>
         </div>
       </div>
@@ -139,7 +147,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <img src="assets/images/faculty/teacher2.jpg" class="img-fluid mb-3" alt="Teacher 2">
+          <img src="assets/images/faculty/teacher2.jpg" onerror="this.src='assets/images/placeholder.jpg'" class="img-fluid mb-3" alt="Teacher 2">
           <p>Mary Smith specializes in advanced mathematics and has helped numerous students excel in national exams.</p>
         </div>
       </div>
@@ -155,7 +163,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
-          <img src="assets/images/faculty/teacher3.jpg" class="img-fluid mb-3" alt="Teacher 3">
+          <img src="assets/images/faculty/teacher3.jpg" onerror="this.src='assets/images/placeholder.jpg'" class="img-fluid mb-3" alt="Teacher 3">
           <p>James Brown is passionate about literature and communication, inspiring students to love reading and writing.</p>
         </div>
       </div>
