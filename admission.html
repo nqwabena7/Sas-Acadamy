@@ -19,11 +19,10 @@
       width: 100%;
       background: url('assets/images/admission-bg.jpeg') center/cover no-repeat fixed;
       background-size: cover;
-      overflow-x: hidden;
       position: relative;
     }
 
-    /* Overlay to enhance readability */
+    /* Overlay */
     body::before {
       content: "";
       position: fixed;
@@ -31,7 +30,6 @@
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.55);
-      pointer-events: none;
       z-index: 0;
     }
 
@@ -54,7 +52,7 @@
     nav a:hover { text-decoration: underline; }
     header div { display:flex; align-items:center; gap:10px; }
 
-    main { padding-top: 100px; min-height: calc(100vh - 140px); position: relative; z-index:1; }
+    main { padding-top: 100px; position: relative; z-index:1; }
 
     .hero {
       background: rgba(0,0,0,0.5);
@@ -84,22 +82,45 @@
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
+    .admission-card h3 { color:#ffcc00; }
 
-    .admission-card h3 { color:#ffcc00; margin-bottom: 15px; }
-    .admission-card p { color:#f1f1f1; font-size:1rem; }
-
-    .apply-btn {
-      display:inline-block;
-      background:#ffcc00;
-      color:#000;
-      font-weight:bold;
-      padding:10px 20px;
-      border-radius:6px;
-      margin-top:10px;
-      text-decoration:none;
-      transition: background 0.3s ease;
+    /* Faculty Section */
+    .faculty-section {
+      background: rgba(0,0,0,0.65);
+      padding: 40px 20px;
+      margin-top: 40px;
+      text-align: center;
+      border-radius: 12px;
     }
-    .apply-btn:hover { background:#e6b800; }
+    .faculty-section h2 {
+      color: #ffcc00;
+      margin-bottom: 25px;
+    }
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .faculty-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .faculty-card:hover { transform: translateY(-5px); }
+    .faculty-card img {
+      width: 100%;
+      max-width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 3px solid #ffcc00;
+    }
+    .faculty-card h4 { margin-bottom: 5px; color:#fff; }
+    .faculty-card small { display:block; color:#ffcc00; margin-bottom: 10px; }
+    .faculty-card p { font-size:0.9rem; color:#ddd; }
 
     footer {
       text-align:center;
@@ -107,68 +128,90 @@
       font-size:0.95rem;
       padding:25px 10px;
       background: rgba(0,0,0,0.75);
-      position: relative;
-      z-index: 10;
-    }
-
-    @media(max-width:768px){
-      .hero h2 { font-size:1.6rem; }
-      .hero p { font-size:1rem; }
-      .admission-card h3 { font-size:1.2rem; }
-      .admission-card p { font-size:0.95rem; }
-      .apply-btn { padding:8px 16px; font-size:0.95rem; }
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>School Dashboard</h1>
-    <nav>
-      <a href="chat.html">Chat</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="notice.html">Notices</a>
-      <a href="academics.html">Academic</a>
-      <a href="admission.html">Admission</a>
-      <a href="school-life.html">School Life</a>
-      <a href="admin.html">Admin</a>
-    </nav>
-    <div>
-      <small id="header-user">Guest</small>
-      <button onclick="logout()">Logout</button>
+<header>
+  <h1>School Dashboard</h1>
+  <nav>
+    <a href="chat.html">Chat</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="notice.html">Notices</a>
+    <a href="academics.html">Academic</a>
+    <a href="admission.html">Admission</a>
+    <a href="school-life.html">School Life</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+  <div>
+    <small id="header-user">Guest</small>
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Admissions 2025/2026</h2>
+    <p>Join Shining Senior High School – excellence in academics, sports, and personal development.</p>
+  </section>
+
+  <section class="admission-info">
+    <div class="admission-card">
+      <h3>Admission Requirements</h3>
+      <p>Applicants must have completed Junior High School with WASSCE/BECE certificates and meet minimum grade requirements. Strong performance in core subjects is expected.</p>
     </div>
-  </header>
+    <div class="admission-card">
+      <h3>How to Apply</h3>
+      <p>Complete the online application form and upload necessary documents including transcripts, birth certificate, and passport photo.</p>
+      <a href="apply.html" class="apply-btn">Apply Now</a>
+    </div>
+    <div class="admission-card">
+      <h3>Important Dates</h3>
+      <p>Application opens: 1st September 2025<br>Application closes: 30th November 2025<br>Entrance exams: 15th December 2025</p>
+    </div>
+    <div class="admission-card">
+      <h3>Contact Information</h3>
+      <p>Email: admissions@shiningshs.edu.gh<br>Phone: +233 59 832 4814</p>
+    </div>
+  </section>
 
-  <main>
-    <section class="hero">
-      <h2>Admissions 2025/2026</h2>
-      <p>Join Shining Senior High School – excellence in academics, sports, and personal development.</p>
-    </section>
+  <!-- Faculty Section -->
+  <section class="faculty-section">
+    <h2>Meet Our Department Heads</h2>
+    <div class="faculty-grid">
+      <div class="faculty-card">
+        <img src="assets/images/faculty/science-head.jpg" alt="Science Head">
+        <h4>Mr. James Owusu</h4>
+        <small>Head of Science Department</small>
+        <p>"Our department focuses on practical and theoretical learning to prepare students for future careers in STEM."</p>
+      </div>
+      <div class="faculty-card">
+        <img src="assets/images/faculty/maths-head.jpg" alt="Maths Head">
+        <h4>Mrs. Adwoa Serwaa</h4>
+        <small>Head of Mathematics Department</small>
+        <p>"We believe in building strong problem-solving skills and logical thinking for all learners."</p>
+      </div>
+      <div class="faculty-card">
+        <img src="assets/images/faculty/arts-head.jpg" alt="Arts Head">
+        <h4>Mr. Kwame Mensah</h4>
+        <small>Head of Arts Department</small>
+        <p>"The Arts Department nurtures creativity and expression, offering a rich cultural experience to students."</p>
+      </div>
+      <div class="faculty-card">
+        <img src="assets/images/faculty/business-head.jpg" alt="Business Head">
+        <h4>Mrs. Akosua Darko</h4>
+        <small>Head of Business Department</small>
+        <p>"We train students in entrepreneurship and business ethics for success in the real world."</p>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <section class="admission-info">
-      <div class="admission-card">
-        <h3>Admission Requirements</h3>
-        <p>Applicants must have completed Junior High School with WASSCE/BECE certificates and meet minimum grade requirements. Strong performance in core subjects is expected.</p>
-      </div>
-      <div class="admission-card">
-        <h3>How to Apply</h3>
-        <p>Complete the online application form and upload necessary documents including transcripts, birth certificate, and passport photo.</p>
-        <a href="apply.html" class="apply-btn">Apply Now</a>
-      </div>
-      <div class="admission-card">
-        <h3>Important Dates</h3>
-        <p>Application opens: 1st September 2025<br>Application closes: 30th November 2025<br>Entrance exams: 15th December 2025</p>
-      </div>
-      <div class="admission-card">
-        <h3>Contact Information</h3>
-        <p>Email: admissions@shiningshs.edu.gh<br>Phone: +233 59 832 4814</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
-  </footer>
+<footer>
+  <small>&copy; 2025 Shining Senior High School. | Powered by Sas Networks</small>
+</footer>
 
 </body>
 </html>
