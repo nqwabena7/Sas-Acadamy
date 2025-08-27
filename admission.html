@@ -22,7 +22,6 @@
       position: relative;
     }
 
-    /* Overlay */
     body::before {
       content: "";
       position: fixed;
@@ -33,7 +32,6 @@
       z-index: 0;
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -57,10 +55,8 @@
     nav a:hover { text-decoration: underline; }
     header div { display: flex; align-items: center; gap: 10px; }
 
-    /* Main Content */
     main { padding-top: 100px; position: relative; z-index: 1; }
 
-    /* Hero */
     .hero {
       background: rgba(0,0,0,0.5);
       text-align: center;
@@ -76,7 +72,6 @@
     }
     .hero p { font-size: 1.1rem; color: #f0f0f0; }
 
-    /* Admission Info Cards */
     .admission-info {
       max-width: 900px;
       margin: 40px auto;
@@ -109,7 +104,6 @@
     }
     .apply-btn:hover { background: #e6b800; }
 
-    /* Footer */
     footer {
       text-align: center;
       color: #fff;
@@ -119,19 +113,14 @@
       margin-top: 30px;
     }
 
-    /* Modal Form Styling */
     .modal-content {
       background: #222;
       color: #fff;
       border-radius: 10px;
       padding: 20px;
     }
-    .modal-header {
-      border-bottom: 1px solid #444;
-    }
-    .modal-footer {
-      border-top: 1px solid #444;
-    }
+    .modal-header { border-bottom: 1px solid #444; }
+    .modal-footer { border-top: 1px solid #444; }
     .form-control, .form-select {
       background-color: #333;
       color: #fff;
@@ -148,17 +137,7 @@
       color: #000;
       border: none;
     }
-    .btn-primary:hover {
-      background: #e6b800;
-    }
-
-    .success-message {
-      color: #00ff99;
-      font-weight: bold;
-      display: none;
-      text-align: center;
-      margin-top: 10px;
-    }
+    .btn-primary:hover { background: #e6b800; }
   </style>
 </head>
 <body>
@@ -179,13 +158,11 @@
 </header>
 
 <main>
-  <!-- Hero Section -->
   <section class="hero">
     <h2>Admissions 2025/2026</h2>
     <p>Join Shining Senior High School – excellence in academics, sports, and personal development.</p>
   </section>
 
-  <!-- Admission Information -->
   <section class="admission-info">
     <div class="admission-card">
       <h3>Admission Requirements</h3>
@@ -211,7 +188,7 @@
   </section>
 </main>
 
-<!-- Modal for Application Form -->
+<!-- Modal Form -->
 <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -219,29 +196,35 @@
         <h5 class="modal-title" id="applyModalLabel">Apply for Admission</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <!-- Netlify form -->
-      <form name="admission" method="POST" data-netlify="true" enctype="multipart/form-data" onsubmit="showSuccess(event)">
+
+      <!-- ✅ Netlify Form -->
+      <form name="admission" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
         <input type="hidden" name="form-name" value="admission">
+        <!-- Honeypot -->
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field"></label>
+        </p>
+
         <div class="modal-body">
           <div class="mb-3">
-            <label for="fullName" class="form-label">Full Name</label>
-            <input type="text" class="form-control" name="Full Name" id="fullName" required>
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="Full Name" required>
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" name="Email" id="email" required>
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="Email" required>
           </div>
           <div class="mb-3">
-            <label for="phone" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" name="Phone" id="phone" required>
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" name="Phone" required>
           </div>
           <div class="mb-3">
-            <label for="dob" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" name="DOB" id="dob" required>
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" name="DOB" required>
           </div>
           <div class="mb-3">
-            <label for="course" class="form-label">Select Course</label>
-            <select class="form-select" name="Course" id="course" required>
+            <label class="form-label">Select Course</label>
+            <select class="form-select" name="Course" required>
               <option value="">--Choose a Course--</option>
               <option value="Science">General Science</option>
               <option value="Business">Business</option>
@@ -251,12 +234,12 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="message" class="form-label">Additional Information</label>
-            <textarea class="form-control" name="Message" id="message" rows="3" placeholder="Any extra details..."></textarea>
+            <label class="form-label">Additional Information</label>
+            <textarea class="form-control" name="Message" rows="3"></textarea>
           </div>
         </div>
+
         <div class="modal-footer">
-          <span class="success-message" id="successMsg">✅ Application Submitted!</span>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Submit Application</button>
         </div>
@@ -272,16 +255,6 @@
 <script>
 function logout(){
   alert("Logged out successfully!");
-}
-
-// Success message without leaving page
-function showSuccess(event) {
-  event.preventDefault();
-  document.getElementById('successMsg').style.display = 'inline-block';
-  setTimeout(() => {
-    document.getElementById('successMsg').style.display = 'none';
-    document.querySelector('#applyModal form').reset();
-  }, 3000);
 }
 </script>
 
