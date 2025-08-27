@@ -138,6 +138,27 @@
       border: none;
     }
     .btn-primary:hover { background: #e6b800; }
+
+    .success-message {
+      text-align: center;
+      background: rgba(0, 128, 0, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      color: #d4edda;
+      margin-top: 15px;
+    }
+    .download-section {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .download-btn {
+      background: #28a745;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .download-btn:hover { background: #218838; }
   </style>
 </head>
 <body>
@@ -198,7 +219,7 @@
       </div>
 
       <!-- ✅ Netlify Form -->
-      <form name="admission" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+      <form name="admission" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" id="admissionForm">
         <input type="hidden" name="form-name" value="admission">
         <!-- Honeypot -->
         <p style="display:none;">
@@ -244,6 +265,16 @@
           <button type="submit" class="btn btn-primary">Submit Application</button>
         </div>
       </form>
+
+      <!-- Success message -->
+      <div class="success-message" id="successMessage" style="display:none;">
+        <h5>Application Submitted Successfully!</h5>
+        <p>Please download your admission details and bring them to the school to complete the process.</p>
+        <div class="download-section">
+          <a id="downloadBtn" class="download-btn" href="#">Download Your Details</a>
+        </div>
+        <p class="text-warning mt-2"><strong>Important:</strong> Print and bring this copy during admission confirmation.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -256,6 +287,43 @@
 function logout(){
   alert("Logged out successfully!");
 }
+
+const form = document.getElementById('admissionForm');
+const successMessage = document.getElementById('successMessage');
+const downloadBtn = document.getElementById('downloadBtn');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const details = {};
+  formData.forEach((value, key) => details[key] = value);
+
+  // Send to Netlify
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    form.style.display = 'none';
+    successMessage.style.display = 'block';
+
+    const textContent = `Admission Form Details\n\n` +
+      `Full Name: ${details['Full Name']}\n` +
+      `Email: ${details.Email}\n` +
+      `Phone: ${details.Phone}\n` +
+      `Date of Birth: ${details.DOB}\n` +
+      `Course: ${details.Course}\n` +
+      `Additional Info: ${details.Message || 'N/A'}\n`;
+
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    downloadBtn.href = url;
+    downloadBtn.download = `Admission_${details['Full Name'].replace(/\s+/g, '_')}.txt`;
+  })
+  .catch(error => alert(error));
+});
 </script>
 
 </body>
