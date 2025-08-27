@@ -151,6 +151,14 @@
     .btn-primary:hover {
       background: #e6b800;
     }
+
+    .success-message {
+      color: #00ff99;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -211,27 +219,29 @@
         <h5 class="modal-title" id="applyModalLabel">Apply for Admission</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form>
+      <!-- Netlify form -->
+      <form name="admission" method="POST" data-netlify="true" enctype="multipart/form-data" onsubmit="showSuccess(event)">
+        <input type="hidden" name="form-name" value="admission">
         <div class="modal-body">
           <div class="mb-3">
             <label for="fullName" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="fullName" required>
+            <input type="text" class="form-control" name="Full Name" id="fullName" required>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="email" required>
+            <input type="email" class="form-control" name="Email" id="email" required>
           </div>
           <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="phone" required>
+            <input type="text" class="form-control" name="Phone" id="phone" required>
           </div>
           <div class="mb-3">
             <label for="dob" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" id="dob" required>
+            <input type="date" class="form-control" name="DOB" id="dob" required>
           </div>
           <div class="mb-3">
             <label for="course" class="form-label">Select Course</label>
-            <select class="form-select" id="course" required>
+            <select class="form-select" name="Course" id="course" required>
               <option value="">--Choose a Course--</option>
               <option value="Science">General Science</option>
               <option value="Business">Business</option>
@@ -242,10 +252,11 @@
           </div>
           <div class="mb-3">
             <label for="message" class="form-label">Additional Information</label>
-            <textarea class="form-control" id="message" rows="3" placeholder="Any extra details..."></textarea>
+            <textarea class="form-control" name="Message" id="message" rows="3" placeholder="Any extra details..."></textarea>
           </div>
         </div>
         <div class="modal-footer">
+          <span class="success-message" id="successMsg">✅ Application Submitted!</span>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Submit Application</button>
         </div>
@@ -261,6 +272,16 @@
 <script>
 function logout(){
   alert("Logged out successfully!");
+}
+
+// Success message without leaving page
+function showSuccess(event) {
+  event.preventDefault();
+  document.getElementById('successMsg').style.display = 'inline-block';
+  setTimeout(() => {
+    document.getElementById('successMsg').style.display = 'none';
+    document.querySelector('#applyModal form').reset();
+  }, 3000);
 }
 </script>
 
