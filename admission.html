@@ -105,6 +105,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: background 0.3s ease;
+      cursor: pointer;
     }
     .apply-btn:hover { background: #e6b800; }
 
@@ -116,6 +117,39 @@
       padding: 25px 10px;
       background: rgba(0,0,0,0.75);
       margin-top: 30px;
+    }
+
+    /* Modal Form Styling */
+    .modal-content {
+      background: #222;
+      color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .modal-header {
+      border-bottom: 1px solid #444;
+    }
+    .modal-footer {
+      border-top: 1px solid #444;
+    }
+    .form-control, .form-select {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    .form-control:focus, .form-select:focus {
+      background-color: #333;
+      color: #fff;
+      border-color: #ffcc00;
+      box-shadow: none;
+    }
+    .btn-primary {
+      background: #ffcc00;
+      color: #000;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #e6b800;
     }
   </style>
 </head>
@@ -155,7 +189,7 @@
     <div class="admission-card">
       <h3>How to Apply</h3>
       <p>Complete the online application form and upload necessary documents including transcripts, birth certificate, and passport photo.</p>
-      <a href="apply.html" class="apply-btn">Apply Now</a>
+      <button class="apply-btn" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
     </div>
     <div class="admission-card">
       <h3>Important Dates</h3>
@@ -172,9 +206,66 @@
   </section>
 </main>
 
+<!-- Modal for Application Form -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="applyModalLabel">Apply for Admission</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phone" required>
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required>
+          </div>
+          <div class="mb-3">
+            <label for="course" class="form-label">Select Course</label>
+            <select class="form-select" id="course" required>
+              <option value="">--Choose a Course--</option>
+              <option value="Science">General Science</option>
+              <option value="Business">Business</option>
+              <option value="Arts">General Arts</option>
+              <option value="Home Economics">Home Economics</option>
+              <option value="Agriculture">Agricultural Science</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Additional Information</label>
+            <textarea class="form-control" id="message" rows="3" placeholder="Any extra details..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <footer>
   <small>&copy; 2025 Shining Senior High School | Powered by Sas Networks</small>
 </footer>
+
+<script>
+function logout(){
+  alert("Logged out successfully!");
+}
+</script>
 
 </body>
 </html>
